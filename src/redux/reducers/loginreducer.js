@@ -1,4 +1,4 @@
-import { GET_USERS_LOGIN, GET_USERS_SUCCESS, GET_USERS_FAILED } from "./action";
+import { GET_USERS_LOGIN, GET_USERS_SUCCESS, GET_USERS_FAILED } from "../actions/loginaction";
 
 var initialState = {
   users: [],

@@ -1,14 +1,14 @@
 import Axios from "axios";
 
-//Action
+// Login Action
 export const GET_USERS_LOGIN = "USERS_LOGIN";
 export const GET_USERS_SUCCESS = "GET_USERS_SUCCESS";
 export const GET_USERS_FAILED = "GET_USERS_FAILED";
 
-//Action creators
+//Action creators Login
 export const getUsersLogin = () => {
   return {
-    type: GET_USERS_LOGIN
+    type: GET_USERS_LOGIN,
   };
 };
 export const getUsersSuccess = (users) => {
@@ -25,10 +25,10 @@ export const getUsersFailed = (error) => {
 };
 
 //Thunk Action
-export function getUsers() {
+export function getUsers(userData) {
   return (dispatch) => {
     dispatch(getUsersLogin());
-    Axios.post("http://localhost:5000/api/user/signin")
+    Axios.post("http://localhost:5000/api/user/signin",userData)
       .then((response) => response.json())
       .then((users) => {
         console.log(users);
@@ -39,3 +39,4 @@ export function getUsers() {
       });
   };
 }
+

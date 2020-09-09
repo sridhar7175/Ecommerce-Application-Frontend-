@@ -1,9 +1,10 @@
-import React, {  useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 import Axios from "axios";
 
 const Updateproduct = () => {
+  const {_id}=useParams()
   const [productName, setProductName] = useState("");
   const [productBrand, setProductBrand] = useState("");
   const [productDescription, setProductDescription] = useState("");
@@ -22,7 +23,7 @@ const Updateproduct = () => {
       productDescription: productDescription,
       productPrice: productPrice,
     };
-    Axios.put("http://localhost:5000/api/user/product/",obj3)
+    Axios.put(`http://localhost:5000/api/user/product/${_id}`, obj3)
       .then((res) => {
         console.log(res);
         localStorage.setItem("userId", res.data);

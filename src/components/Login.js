@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import Axios from "axios";
-
+import { connect } from "react-redux";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const login = (e) => {
     e.preventDefault();
-    // var body = { email: email, password: password };
+    var body = { email: email, password: password };
 
-    // Axios.post("http://localhost:5000/api/user/signin", body)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     localStorage.setItem("userId", res.data._id);
-    //     localStorage.setItem("role",res.data.role);
-    //     localStorage.setItem("name",res.data.name);
-    //     localStorage.setItem('email',res.data.email)
-    //     window.location.href = "/";
-    //   })
-    //   .catch((err) => {
-    //     console.log(JSON.stringify(err));
-    //     alert("Failed to Login, Please try again");
-    //   });
-    //   setEmail('')
-    //   setPassword('')
+    Axios.post("http://localhost:5000/api/user/signin", body)
+      .then((res) => {
+        console.log(res.data);
+        localStorage.setItem("userId", res.data._id);
+        localStorage.setItem("role", res.data.role);
+        localStorage.setItem("name", res.data.name);
+        localStorage.setItem("email", res.data.email);
+        window.location.href = "/";
+      })
+      .catch((err) => {
+        console.log(JSON.stringify(err));
+        alert("Failed to Login, Please try again");
+      });
+    setEmail("");
+    setPassword("");
   };
   return (
     <div className="text-center container mt-5">
@@ -56,5 +56,12 @@ const Login = () => {
     </div>
   );
 };
+const mapStateToProps = (state) => {
+  return {};
+};
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login);

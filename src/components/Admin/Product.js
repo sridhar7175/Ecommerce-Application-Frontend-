@@ -7,6 +7,7 @@ import { addToCarts } from "../../action/addtocart";
 
 const Product = (props) => {
   const [productNames, setProductNames] = useState([]);
+  const [disabled,setDisabled]=useState(true)
   // console.log("allprops", props);
   const FetechData = () => {
     Axios.get("http://localhost:5000/api/user/product")
@@ -28,7 +29,7 @@ const Product = (props) => {
     // props.addToCart({
     //   product,
     // });
-    console.log(store.dispatch(addToCarts(cart)));
+    
   };
 
   // const addproduct = (e) => {
@@ -85,10 +86,10 @@ const Product = (props) => {
                 Add To Cart
               </button>
             </Link>
-            <Link to="/signin">
+           {/* <Link to="/signin">
               {" "}
               <button className="btn btn-info btn-sm mt-2">Buy Now</button>
-            </Link>
+              </Link>*/}
           </div>
         ))}
       </div>
