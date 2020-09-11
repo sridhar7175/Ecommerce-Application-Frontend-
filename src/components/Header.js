@@ -1,7 +1,8 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.clear();
@@ -9,6 +10,8 @@ const Header = () => {
   };
   //console.log(localStorage.getItem("role"))
   const data = localStorage.getItem("role");
+
+
   return (
     <div>
       <div className="header bg-dark">
@@ -47,7 +50,7 @@ const Header = () => {
                 {localStorage.getItem("userId") != null ? (
                   <React.Fragment>
                     <li className="nav-item active ">
-                      {data==="admin" ? (
+                      {data === "admin" ? (
                         <Link
                           className="nav-link text-white"
                           to="/admin/dashboard"
@@ -88,6 +91,9 @@ const Header = () => {
                     </Link>
                   </li>
                 )}
+                <li className="nav-item">
+                 
+                </li>
               </ul>
             </div>
           </nav>
