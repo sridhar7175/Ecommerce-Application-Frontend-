@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
@@ -19,12 +19,22 @@ const AddProduct = (props) => {
   //   //setPhoto(e.target.value.files[0] );
   // };
 
+  useEffect(() => {
+    console.log(photo, "photo");
+  }, [photo]);
+
+  const handlePhoto = (e) => {
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    reader.onloadend = () => {
+      setPhoto(reader.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
   const addproduct = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("file",photo)
-    formData.append("Upload_Present","Deva")
-    formData.append("Could_name","deva")
 
     //console.log(photo);
     let obj1 = {
@@ -32,10 +42,10 @@ const AddProduct = (props) => {
       productBrand: productBrand,
       productDescription: productDescription,
       productPrice: productPrice,
-      formData:formData
+      photo: photo,
     };
     Axios.post("http://localhost:5000/api/user/product/", obj1)
-    //console.log(JSON.stringify(obj1))
+      //console.log(JSON.stringify(obj1))
 
       .then((response) => {
         console.log(response.json());
@@ -69,11 +79,14 @@ const AddProduct = (props) => {
           <div>
             <input
               className="form-control mt-2"
-              onChange={e=>setPhoto(e.target.files[0])}
+              onChange={(e) => handlePhoto(e)}
               type="file"
               placeholder="choose a file"
             />
           </div>
+          {photo !== null && (
+            <img src={photo} style={{ width: "100px", height: "100px" }} />
+          )}
           <div>
             <input
               type="text"
