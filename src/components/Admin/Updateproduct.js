@@ -26,7 +26,6 @@ const Updateproduct = () => {
     Axios.put(`http://localhost:5000/api/user/product/${_id}`, obj3)
       .then((res) => {
         console.log(res);
-        localStorage.setItem("userId", res.data);
         window.location.href = "/";
       })
       .catch((err) => {
