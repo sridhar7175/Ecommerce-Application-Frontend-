@@ -15,7 +15,7 @@ const Register = () => {
       password: password,
     };
     console.log(obj);
-    Axios.post("http://localhost:5000/api/user/signup", obj)
+    Axios.post("http://localhost:5000/api/signup", obj)
       .then((res) => console.log(res))
       .then((data) => {
         window.location.href = "/signin";

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import { generatePublicUrl } from "../../urlConfig";
 
 const Product = (props) => {
   const [productNames, setProductNames] = useState([]);
   const [search, setSearch] = useState("");
 
   const FetechData = () => {
-    Axios.get("http://localhost:5000/api/user/product")
+    Axios.get("http://localhost:5000/api/getproduct")
       .then((productNames) => {
         console.log(productNames);
         setProductNames(productNames.data);
@@ -20,9 +21,11 @@ const Product = (props) => {
   useEffect(() => {
     FetechData();
   }, []);
-  // const filternames = productNames.filter((productName) => {
-  //   return productName.productName.toLowerCase().includes(search.toLowerCase());
-  // });
+  const filternames = productNames.filter((productName) => {
+    return productName.productName.toLowerCase().includes(search.toLowerCase());
+  });
+
+  // console.log(productNames.productPicture[0].img)
 
   const AddTocart = (cart) => {};
   //console.log(filternames.length,filternames,"product")
@@ -40,7 +43,7 @@ const Product = (props) => {
       </form>
       <div className="text-center">
         <div>
-          {productNames.map((productNam) => (
+          {filternames.map((productNam) => (
             <div
               key={productNam._id}
               className="card1 "
@@ -51,7 +54,12 @@ const Product = (props) => {
               }}
             >
               <div>
-                <img src={productNam.photo.data.contentType} />
+                <img
+                  src={generatePublicUrl(productNam.productPicture[0].img)}
+                  width="250px"
+                  height="200px"
+                  style={{borderRadius:"10px"}}
+                />
               </div>
               <div>Name:{productNam.productName}</div>
               <div>Brand:{productNam.productBrand}</div>

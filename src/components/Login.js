@@ -8,7 +8,7 @@ const Login = () => {
     e.preventDefault();
     var body = { email: email, password: password };
 
-    Axios.post("http://localhost:5000/api/user/signin", body)
+    Axios.post("http://localhost:5000/api/signin", body)
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("userId", res.data._id);

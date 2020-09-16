@@ -33,7 +33,7 @@ h2 {
   font-weight: 400;
   background-color: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  padding-top: 20px;
+  /* padding-top: 20px; */
   background-clip: border-box;
   margin-bottom: 50px;
   margin-top:20px;
@@ -62,7 +62,6 @@ h2 {
     outline: none !important;
   }
   .navbar-toggler-icon{
-    color:white !important;
     background-color: white !important;
   }
 }

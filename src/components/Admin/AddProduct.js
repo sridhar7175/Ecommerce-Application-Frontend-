@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import swal from "sweetalert";
 import Swal from "sweetalert2";
 
 const AddProduct = (props) => {
@@ -9,22 +8,29 @@ const AddProduct = (props) => {
   const [productBrand, setProductBrand] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productPrice, setproductPrice] = useState("");
-  const [photo, setPhoto] = useState(null);
+  const [productPicture, setProductPicture] = useState("");
 
   const onChangeProduct = (e) => {
     setProductName(e.target.value);
   };
-  // const onChangePhoto = (e) => {
-  //   console.log(e.target.value.files)
-  //   //setPhoto(e.target.value.files[0] );
-  // };
+ 
+
+  useEffect(() => {
+    console.log(productPicture, "productPicture");
+  }, [productPicture]);
+
+  const handlePhoto = (e) => {
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    reader.onloadend = () => {
+      setProductPicture(reader.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
 
   const addproduct = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("file",photo)
-    formData.append("Upload_Present","Deva")
-    formData.append("Could_name","deva")
 
     //console.log(photo);
     let obj1 = {
@@ -32,10 +38,10 @@ const AddProduct = (props) => {
       productBrand: productBrand,
       productDescription: productDescription,
       productPrice: productPrice,
-      formData:formData
+      productPicture: productPicture,
     };
-    Axios.post("http://localhost:5000/api/user/product/", obj1)
-    //console.log(JSON.stringify(obj1))
+    Axios.post("http://localhost:5000/api/createproduct", obj1)
+      //console.log(JSON.stringify(obj1))
 
       .then((response) => {
         console.log(response.json());
@@ -50,7 +56,7 @@ const AddProduct = (props) => {
     setProductBrand("");
     setproductPrice("");
     setProductDescription("");
-    setPhoto("");
+    setProductPicture("");
   };
 
   return (
@@ -69,11 +75,14 @@ const AddProduct = (props) => {
           <div>
             <input
               className="form-control mt-2"
-              onChange={e=>setPhoto(e.target.files[0])}
+              onChange={(e) => handlePhoto(e)}
               type="file"
               placeholder="choose a file"
             />
           </div>
+          {productPicture !== null && (
+            <img src={productPicture} style={{ width: "100px", height: "100px" }} />
+          )}
           <div>
             <input
               type="text"

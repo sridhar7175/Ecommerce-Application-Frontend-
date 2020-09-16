@@ -23,7 +23,7 @@ const Updateproduct = () => {
       productDescription: productDescription,
       productPrice: productPrice,
     };
-    Axios.put(`http://localhost:5000/api/user/product/${_id}`, obj3)
+    Axios.put(`http://localhost:5000/api/updateproduct/${_id}`, obj3)
       .then((res) => {
         console.log(res);
         window.location.href = "/";
@@ -50,6 +50,13 @@ const Updateproduct = () => {
       </h1>
       <div className="box3 rounded p-5">
         <form>
+        <div>
+          <input
+            className="form-control mt-2"
+            type="file"
+            placeholder="choose a file"
+          />
+        </div>
           <div>
             <input
               type="text"

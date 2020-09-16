@@ -8,7 +8,7 @@ const Manageproducts = () => {
 
     
   const FetechData = () => {
-    Axios.get("http://localhost:5000/api/user/product")
+    Axios.get("http://localhost:5000/api/getproduct")
       .then((productNames) => {
         console.log(productNames);
         setProductNames(productNames.data);
@@ -24,7 +24,7 @@ const Manageproducts = () => {
   }, []);
   
   const onDelete=(id)=>{
-    Axios.delete('http://localhost:5000/api/user/product/' + id)
+    Axios.delete('http://localhost:5000/api/deleteproduct/' + id)
     .then((response) => FetechData())
   }
   return (
