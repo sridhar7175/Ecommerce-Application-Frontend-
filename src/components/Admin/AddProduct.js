@@ -13,7 +13,6 @@ const AddProduct = (props) => {
   const onChangeProduct = (e) => {
     setProductName(e.target.value);
   };
- 
 
   useEffect(() => {
     console.log(productPicture, "productPicture");
@@ -23,7 +22,7 @@ const AddProduct = (props) => {
     let reader = new FileReader();
     let file = e.target.files[0];
     reader.onloadend = () => {
-      setProductPicture(reader.result);
+      setProductPicture(file);
     };
 
     reader.readAsDataURL(file);
@@ -31,20 +30,17 @@ const AddProduct = (props) => {
 
   const addproduct = (e) => {
     e.preventDefault();
+    console.log(productPicture, "pic");
+    const formData = new FormData();
+    formData.append("productPicture", productPicture);
+    formData.append("productName", productName);
+    formData.append("productBrand", productBrand);
+    formData.append("productDescription", productDescription);
+    formData.append("productPrice", productPrice);
 
-    //console.log(photo);
-    let obj1 = {
-      productName: productName,
-      productBrand: productBrand,
-      productDescription: productDescription,
-      productPrice: productPrice,
-      productPicture: productPicture,
-    };
-    Axios.post("http://localhost:5000/api/createproduct", obj1)
-      //console.log(JSON.stringify(obj1))
-
+    Axios.post("http://localhost:5000/api/createproduct", formData, {})
       .then((response) => {
-        console.log(response.json());
+        console.log(response);
 
         Swal.fire({ title: "created successfully", timer: 1500 });
       })
@@ -72,6 +68,7 @@ const AddProduct = (props) => {
       </h1>
       <div className="box3 rounded p-5">
         <form>
+          {productPicture && productPicture.length}
           <div>
             <input
               className="form-control mt-2"
@@ -80,9 +77,6 @@ const AddProduct = (props) => {
               placeholder="choose a file"
             />
           </div>
-          {productPicture !== null && (
-            <img src={productPicture} style={{ width: "100px", height: "100px" }} />
-          )}
           <div>
             <input
               type="text"

@@ -43,43 +43,45 @@ const Product = (props) => {
       </form>
       <div className="text-center">
         <div>
-          {filternames.map((productNam) => (
-            <div
-              key={productNam._id}
-              className="card1 "
-              style={{
-                display: "inline-block",
-                marginRight: "100px",
-                textAlign: "center",
-              }}
-            >
-              <div>
-                <img
-                  src={generatePublicUrl(productNam.productPicture[0].img)}
-                  width="250px"
-                  height="200px"
-                  style={{borderRadius:"10px"}}
-                />
-              </div>
-              <div>Name:{productNam.productName}</div>
-              <div>Brand:{productNam.productBrand}</div>
-              <div>productDescription:{productNam.productDescription}</div>
-              <div>Price:{productNam.productPrice}.00</div>
-              <Link to="/cart">
-                <button
-                  className="btn btn-info btn-sm mt-2"
-                  style={{ marginRight: "10px" }}
-                  onClick={() => AddTocart(productNam)}
-                >
-                  Add To Cart
-                </button>
-              </Link>
-              {/* <Link to="/signin">
-                {" "}
-                <button className="btn btn-info btn-sm mt-2">Buy Now</button>
-                </Link>*/}
+        {(filternames.length)?(<div> {filternames.map((productNam) => (
+          <div
+            key={productNam._id}
+            className="card1 "
+            style={{
+              display: "inline-block",
+              marginRight: "100px",
+              textAlign: "center",
+            }}
+          >
+            <div>
+              {/*<img
+                src={generatePublicUrl(productNam.productPicture[0].img)}
+                width="250px"
+                height="200px"
+                style={{borderRadius:"10px"}}
+              />
+              */}
             </div>
-          ))}
+            <div>Name:{productNam.productName}</div>
+            <div>Brand:{productNam.productBrand}</div>
+            <div>productDescription:{productNam.productDescription}</div>
+            <div>Price:{productNam.productPrice}.00</div>
+            <Link to="/cart">
+              <button
+                className="btn btn-info btn-sm mt-2"
+                style={{ marginRight: "10px" }}
+                onClick={() => AddTocart(productNam)}
+              >
+                Add To Cart
+              </button>
+            </Link>
+            {/* <Link to="/signin">
+              {" "}
+              <button className="btn btn-info btn-sm mt-2">Buy Now</button>
+              </Link>*/}
+          </div>
+        ))}</div>):(<div className="mb-5"><h1 className="mb-5">No Products Display</h1></div>)}
+         
         </div>
       </div>
     </div>
