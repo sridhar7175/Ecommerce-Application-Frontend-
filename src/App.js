@@ -28,7 +28,7 @@ function App() {
           <Route path="/user/dashboard" component={UserDashboardpage} />
           <Route path="/admin/dashboard" component={AdminDspage} />
           <Route path="/admin/create/product" component={Addproductpage} />
-          <Route path="/admin/products" component={Manageproductspage} />
+          <Route path="/admin/mangeproduct" component={Manageproductspage} />
           <Route path="/admin/product/update/:Id" component={Updateproductpage} />
           <Route path="/buy" component={Buypage} />
         </Switch>

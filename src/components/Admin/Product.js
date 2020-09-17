@@ -54,13 +54,12 @@ const Product = (props) => {
             }}
           >
             <div>
-              {/*<img
+              <img
                 src={generatePublicUrl(productNam.productPicture[0].img)}
                 width="250px"
                 height="200px"
                 style={{borderRadius:"10px"}}
               />
-              */}
             </div>
             <div>Name:{productNam.productName}</div>
             <div>Brand:{productNam.productBrand}</div>

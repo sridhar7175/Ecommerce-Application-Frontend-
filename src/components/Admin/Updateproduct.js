@@ -4,19 +4,38 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Updateproduct = (props) => {
+  //console.log(props.testvalue)
   const [productName, setProductName] = useState("");
   const [productBrand, setProductBrand] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productPrice, setproductPrice] = useState("");
   const [productPicture, setProductPicture] = useState("");
-  const [uid,setUid]=useState('')
+  const id = window.location.pathname.slice(22);
 
+  //console.log(productname.productName)
   const onChangeProduct = (e) => {
     setProductName(e.target.value);
+  };
+  const FetechData = () => {
+    Axios.get(`http://localhost:5000/api/getoneproduct/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        const details = res.data[0];
+        console.log(details);
+        setProductName(details.productName);
+        setProductBrand(details.productBrand);
+        setProductDescription(details.productDescription);
+        setproductPrice(details.productPrice);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
     console.log(productPicture, "productPicture");
+    FetechData();
   }, [productPicture]);
 
   const handlePhoto = (e) => {
@@ -29,7 +48,7 @@ const Updateproduct = (props) => {
     reader.readAsDataURL(file);
   };
 
-  const addproduct = (e) => {
+  const updateproduct = (e) => {
     e.preventDefault();
     console.log(productPicture, "pic");
     const formData = new FormData();
@@ -38,12 +57,10 @@ const Updateproduct = (props) => {
     formData.append("productBrand", productBrand);
     formData.append("productDescription", productDescription);
     formData.append("productPrice", productPrice);
-
-    Axios.put(`http://localhost:5000/api/updateproduct/${uid}`, formData, {})
+    Axios.put(`http://localhost:5000/api/updateproduct/${id}`, formData, {})
       .then((response) => {
         console.log(response);
-
-        Swal.fire({ title: "created successfully", timer: 1500 });
+        Swal.fire({ title: "successfully Updated", timer: 1500 });
       })
       .catch((err) => {
         console.log(err);
@@ -120,10 +137,10 @@ const Updateproduct = (props) => {
           </div>
 
           <button
-            onClick={addproduct}
+            onClick={updateproduct}
             className="mt-3 mb-4 form-control btn-success"
           >
-            CreateProduct
+            UpdateProduct
           </button>
         </form>
       </div>
