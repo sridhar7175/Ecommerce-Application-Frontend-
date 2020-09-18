@@ -31,9 +31,9 @@ const Register = () => {
   };
 
   return (
-    <div className="container text-center mt-5">
-      <h1>Sign Up page</h1>
-      <h4 className="mt-2 mb-2">A page for user to sign up!</h4>
+    <div className="">
+    <div className="container mt-5 register-box">
+      <h5 className="pl-5 mt-2">Register Here</h5>
       <form>
         <div>
           <input
@@ -83,10 +83,11 @@ const Register = () => {
         >
           Submit
         </button>
-        <span className="mt-2">
+        <p className="mt-3 pl-4">
           Already have an account? <Link to="/signin">Sign in</Link>
-        </span>
+        </p>
       </form>
+    </div>
     </div>
   );
 };

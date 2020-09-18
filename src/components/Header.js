@@ -1,8 +1,7 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.clear();
@@ -11,10 +10,9 @@ const Header = () => {
   //console.log(localStorage.getItem("role"))
   const data = localStorage.getItem("role");
 
-
   return (
     <div>
-      <div className="header bg-dark">
+      <div className="header">
         <div className="container text-white">
           <nav className="navbar navbar-expand-lg navbar-light ">
             <Link className="navbar-brand text-white" to="/">
@@ -29,7 +27,7 @@ const Header = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span className="navbar-toggler-icon text-white"></span>
+              <span className="navbar-toggler-icon "></span>
             </button>
 
             <div
@@ -40,6 +38,16 @@ const Header = () => {
                 <li className="nav-item active">
                   <Link className="nav-link text-white" to="/">
                     Home
+                  </Link>
+                </li>
+                <li className="nav-item active">
+                  <Link className="nav-link text-white" to="/shop">
+                    Shop
+                  </Link>
+                </li>
+                <li className="nav-item active">
+                  <Link className="nav-link text-white" to="/about">
+                    AboutUs
                   </Link>
                 </li>
                 <li className="nav-item active ">
@@ -91,9 +99,7 @@ const Header = () => {
                     </Link>
                   </li>
                 )}
-                <li className="nav-item">
-                 
-                </li>
+                <li className="nav-item"></li>
               </ul>
             </div>
           </nav>

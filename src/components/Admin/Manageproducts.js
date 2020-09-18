@@ -4,13 +4,6 @@ import Axios from "axios";
 
 const Manageproducts = () => {
   const [productNames, setProductNames] = useState([]);
-  // const newData = (id) => {
-  //   Axios.get(`http://localhost:5000/api/getoneproduct/${id}`).then((res) => {
-  //     console.log(res);
-  //   });
-  // };
-  //console.log(window.location.href)
-  //console.log(params)
   const FetechData = () => {
     Axios.get("http://localhost:5000/api/getproduct")
       .then((productNames) => {
@@ -24,7 +17,6 @@ const Manageproducts = () => {
 
   useEffect(() => {
     FetechData();
-    //newData();
   }, []);
 
   const onDelete = (id) => {
@@ -49,11 +41,11 @@ const Manageproducts = () => {
               </div>
               <div className="col-sm-4">
                 <Link
-                  className="btn btn-success" params={{ testvalue: "hello" }}
+                  className="btn btn-success"
                   to={`/admin/product/update/${productname._id}`}
                   
                 >
-                  <span className=""  >Update</span>
+                  <span className="">Update</span>
                 </Link>
               </div>
               <div className="col-sm-4">
