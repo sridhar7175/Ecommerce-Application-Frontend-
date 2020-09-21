@@ -45,11 +45,12 @@ const Header = () => {
                     Shop
                   </Link>
                 </li>
-                <li className="nav-item active">
+              {/*  <li className="nav-item active">
                   <Link className="nav-link text-white" to="/about">
                     AboutUs
                   </Link>
                 </li>
+  */}
                 <li className="nav-item active ">
                   <Link className="nav-link text-white" to="/cart">
                     Cart

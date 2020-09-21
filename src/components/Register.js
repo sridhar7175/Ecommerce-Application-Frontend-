@@ -55,10 +55,8 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div></div>
-        <h6 className="mt-3"></h6>
         <select
-          className="form-control"
+          className="form-control mt-3"
           name="role"
           value={role}
           onChange={(e) => setRole(e.target.value)}
@@ -69,7 +67,7 @@ const Register = () => {
         </select>
         <div>
           <input
-            type="text"
+            type="password"
             name="password"
             className="form-control mt-3"
             placeholder="Enter a Password....."

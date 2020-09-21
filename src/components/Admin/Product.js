@@ -6,7 +6,7 @@ import { generatePublicUrl } from "../../urlConfig";
 const Product = (props) => {
   const [productNames, setProductNames] = useState([]);
   const [search, setSearch] = useState("");
-
+  const data = localStorage.getItem("role");
   const FetechData = () => {
     Axios.get("http://localhost:5000/api/getproduct")
       .then((productNames) => {
@@ -75,13 +75,17 @@ const Product = (props) => {
                   <div>productDescription:{productNam.productDescription}</div>
                   <div>Price:{productNam.productPrice}.00</div>
                   <Link to="/cart">
-                    <button
-                      className="btn btn-info btn-sm mt-2"
-                      style={{ marginRight: "10px" }}
-                      onClick={() => AddTocart(productNam)}
-                    >
-                      Add To Cart
-                    </button>
+                    {data === "user"? (
+                      <button
+                        className="btn btn-info btn-sm mt-2"
+                        style={{ marginRight: "10px" }}
+                        onClick={() => AddTocart(productNam)}
+                      >
+                        Add To Cart
+                      </button>
+                    ) : (
+                      ""
+                    )}
                   </Link>
                   {/* <Link to="/signin">
               {" "}
