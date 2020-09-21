@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Updateproduct = (props) => {
-  //console.log(props.testvalue)
   const [productName, setProductName] = useState("");
   const [productBrand, setProductBrand] = useState("");
   const [productDescription, setProductDescription] = useState("");
@@ -12,7 +11,6 @@ const Updateproduct = (props) => {
   const [productPicture, setProductPicture] = useState("");
   const id = window.location.pathname.slice(22);
 
-  //console.log(productname.productName)
   const onChangeProduct = (e) => {
     setProductName(e.target.value);
   };

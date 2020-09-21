@@ -7,7 +7,7 @@ const AddProduct = (props) => {
   const [productName, setProductName] = useState("");
   const [productBrand, setProductBrand] = useState("");
   const [productDescription, setProductDescription] = useState("");
-  const [productPrice, setproductPrice] = useState("");
+  const [productPrice, setProductPrice] = useState("");
   const [productPicture, setProductPicture] = useState("");
 
   const onChangeProduct = (e) => {
@@ -50,7 +50,7 @@ const AddProduct = (props) => {
       });
     setProductName("");
     setProductBrand("");
-    setproductPrice("");
+    setProductPrice("");
     setProductDescription("");
     setProductPicture("");
   };
@@ -114,7 +114,7 @@ const AddProduct = (props) => {
               className="form-control mt-2"
               value={productPrice}
               placeholder="ProductPrice..."
-              onChange={(e) => setproductPrice(e.target.value)}
+              onChange={(e) => setProductPrice(e.target.value)}
             />
           </div>
 

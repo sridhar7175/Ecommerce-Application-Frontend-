@@ -92,7 +92,9 @@ const Product = (props) => {
             </div>
           ) : (
             <div className="mb-5">
-              <h1 className="mb-5" style={{ fontFamily: "'Play', sans-serif" }}>No Products Display</h1>
+              <h1 className="mb-5" style={{ fontFamily: "'Play', sans-serif" }}>
+                No Products Display
+              </h1>
             </div>
           )}
         </div>

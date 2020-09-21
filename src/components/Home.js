@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Slide } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
+
 
 const Home = () => {
-  //const slideImages = ["images/1.webp", "images/2.jpg", "images/3.jpeg"];
+  
   return (
     <div>
       <div

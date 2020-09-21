@@ -14,25 +14,28 @@ const Footer = () => {
             <div className="text-white footer1 " style={{ display: "flex" }}>
               <Link
                 className="text-white pr-3 mt-2 footer2"
-                style={{ fontSize: "23px" }}
+                style={{ fontSize: "23px" }} to='/'
               >
                 <FaFacebook />
               </Link>
               <Link
                 className="text-white pr-3 mt-2 footer3"
                 style={{ fontSize: "23px" }}
+                to='/'
               >
                 <AiOutlineInstagram />
               </Link>
               <Link
                 className="text-white pr-3 mt-2 footer4"
                 style={{ fontSize: "23px" }}
+                to='/'
               >
                 <SiGmail />
               </Link>
               <Link
                 className="text-white pr-3 mt-2 footer4"
                 style={{ fontSize: "23px" }}
+                to='/'
               >
                 <AiFillTwitterCircle />
               </Link>
@@ -41,19 +44,19 @@ const Footer = () => {
           <div className="col-md-4 mb-3">
             <h6 className="text-white">COMPANY</h6>
             <div className="footer6">
-              <Link className="text-white mt-2 footer6 mb-2">Contact Us</Link>
+              <Link className="text-white mt-2 footer6 mb-2" to='/'>Contact Us</Link>
               <br />
-              <Link className="text-white mt-2 footer6">Track Shipment</Link>
+              <Link className="text-white mt-2 footer6" to='/'>Track Shipment</Link>
               <br />
-              <Link className="text-white mt-2 footer6">Privacy Policy</Link>
+              <Link className="text-white mt-2 footer6" to='/'>Privacy Policy</Link>
               <br />
-              <Link className="text-white mt-2 footer6">
+              <Link className="text-white mt-2 footer6" to='/'>
                 Returns And Exchange Policy
               </Link>
               <br />
-              <Link className="text-white mt-2 footer6">Shipping Policy</Link>
+              <Link className="text-white mt-2 footer6" to='/'>Shipping Policy</Link>
               <br />
-              <Link className="text-white mt-2 footer6">
+              <Link className="text-white mt-2 footer6" to='/'>
                 Terms & Conditions
               </Link>
               <br />

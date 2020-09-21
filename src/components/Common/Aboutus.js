@@ -4,7 +4,7 @@ import React from "react";
 const Aboutus = () => {
   return (
     <div>
-      <div className="container mt-5 mb-5">
+      <div className="container mt-5 mb-5 about3">
         <div className="row">
           <div className="col-md-4">
             <div className="">
@@ -52,8 +52,9 @@ const Aboutus = () => {
             </p>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+    
   );
 };
 

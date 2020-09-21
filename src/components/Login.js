@@ -32,7 +32,7 @@ const Login = () => {
       <form>
         <div>
           <input
-            type="text"
+            type="email"
             name="email"
             className="form-control mt-3"
             placeholder="Enter a Email....."
@@ -42,7 +42,7 @@ const Login = () => {
         </div>
         <div>
           <input
-            type="text"
+            type="password"
             name="password"
             className="form-control mt-3"
             placeholder="Enter a Password....."
