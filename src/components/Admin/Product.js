@@ -10,14 +10,14 @@ const Product = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
-  console.log(props.productNames);
+  //console.log(props.productNames);
 
   useEffect(() => {
     props.getProducts();
   }, []);
 
   useEffect(() => {
-    console.log(props, "props");
+    //console.log(props, "props");
     setProductNames(props?.productNames?.productNames);
 
     //setProductNames(props.productNames)

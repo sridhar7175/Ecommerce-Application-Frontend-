@@ -5,7 +5,7 @@ import {
 } from "../actions/productaction";
 
 export var products = (state = {}, action) => {
-  console.log(action)
+  //console.log(action)
   switch (action.type) {
     case GETPRODUCTS_STARTED:
       return {

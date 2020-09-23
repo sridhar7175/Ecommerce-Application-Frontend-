@@ -1,42 +1,43 @@
 import Axios from "axios";
 
-// Login Action
-export const GET_USERS_LOGIN = "USERS_LOGIN";
-export const GET_USERS_SUCCESS = "GET_USERS_SUCCESS";
-export const GET_USERS_FAILED = "GET_USERS_FAILED";
+export const GET_LOGIN_STARTED = "GET_LOGIN_STARTED";
+export const GET_LOGIN_SUCCESS = "GET_LOGIN_SUCCESS";
+export const GET_LOGIN_FAILED = "GET_LOGIN_FAILED";
 
-//Action creators Login
-export const getUsersLogin = () => {
+export function getLoginStatred() {
   return {
-    type: GET_USERS_LOGIN,
-  };
-};
-export const getUsersSuccess = (users) => {
-  return {
-    type: GET_USERS_SUCCESS,
-    users,
-  };
-};
-export const getUsersFailed = (error) => {
-  return {
-    type: GET_USERS_FAILED,
-    error,
-  };
-};
-
-//Thunk Action
-export function getUsers(userData) {
-  return (dispatch) => {
-    dispatch(getUsersLogin());
-    Axios.post("http://localhost:5000/api/user/signin",userData)
-      .then((response) => response.json())
-      .then((users) => {
-        console.log(users);
-        dispatch(getUsersSuccess(users));
-      })
-      .catch((err) => {
-        dispatch(getUsersFailed(err));
-      });
+    type: GET_LOGIN_STARTED,
   };
 }
 
+export function getLoginSuccess(users) {
+  return {
+    type: GET_LOGIN_SUCCESS,
+    users,
+  };
+}
+
+export function getLoginFailed(error) {
+  return {
+    type: GET_LOGIN_FAILED,
+    error,
+  };
+}
+
+//Thunk Action
+export function getLoginUser(email,password) {
+  var body={email,password}
+  return (dispatch) => {
+    dispatch(getLoginStatred());
+    Axios.post("http://localhost:5000/api/signin",body)
+    .then((res)=>console.log(res))
+      .then((res) => {
+        console.log("res", res.data);
+        dispatch(getLoginSuccess(res.data));
+        window.location='/'
+      })
+      .catch((err) => {
+        dispatch(getLoginFailed(err));
+      });
+  };
+}

@@ -1,31 +1,30 @@
-import { GET_USERS_LOGIN, GET_USERS_SUCCESS, GET_USERS_FAILED } from "../actions/loginaction";
+import {
+  GET_LOGIN_STARTED,
+  GET_LOGIN_SUCCESS,
+  GET_LOGIN_FAILED,
+} from "../actions/loginaction";
 
-var initialState = {
-  users: [],
-  loading: false,
-  error: false,
-};
 
-export const users = (state = initialState, action) => {
-  console.log(JSON.stringify(action));
+export var loginUsers = (state = {}, action) => {
+  console.log(action)
   switch (action.type) {
-    case GET_USERS_LOGIN:
+    case GET_LOGIN_STARTED:
       return {
         users: [],
         loading: true,
-        error: false,
+        error: null,
       };
-    case GET_USERS_SUCCESS:
+    case GET_LOGIN_SUCCESS:
       return {
         users: action.users,
         loading: false,
-        error: false,
+        error: null,
       };
-    case GET_USERS_FAILED:
+    case GET_LOGIN_FAILED:
       return {
         users: [],
         loading: false,
-        error: true,
+        error: action.error,
       };
     default:
       return state;
