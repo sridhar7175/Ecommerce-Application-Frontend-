@@ -1,33 +1,28 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import swal from "sweetalert";
 import Swal from "sweetalert2";
 
 const AddProduct = (props) => {
   const [productName, setProductName] = useState("");
   const [productBrand, setProductBrand] = useState("");
   const [productDescription, setProductDescription] = useState("");
-  const [productPrice, setproductPrice] = useState("");
-  const [photo, setPhoto] = useState(null);
+  const [productPrice, setProductPrice] = useState("");
+  const [productPicture, setProductPicture] = useState("");
 
   const onChangeProduct = (e) => {
     setProductName(e.target.value);
   };
-  // const onChangePhoto = (e) => {
-  //   console.log(e.target.value.files)
-  //   //setPhoto(e.target.value.files[0] );
-  // };
 
   useEffect(() => {
-    console.log(photo, "photo");
-  }, [photo]);
+    console.log(productPicture, "productPicture");
+  }, [productPicture]);
 
   const handlePhoto = (e) => {
     let reader = new FileReader();
     let file = e.target.files[0];
     reader.onloadend = () => {
-      setPhoto(reader.result);
+      setProductPicture(file);
     };
 
     reader.readAsDataURL(file);
@@ -35,20 +30,17 @@ const AddProduct = (props) => {
 
   const addproduct = (e) => {
     e.preventDefault();
+    console.log(productPicture, "pic");
+    const formData = new FormData();
+    formData.append("productPicture", productPicture);
+    formData.append("productName", productName);
+    formData.append("productBrand", productBrand);
+    formData.append("productDescription", productDescription);
+    formData.append("productPrice", productPrice);
 
-    //console.log(photo);
-    let obj1 = {
-      productName: productName,
-      productBrand: productBrand,
-      productDescription: productDescription,
-      productPrice: productPrice,
-      photo: photo,
-    };
-    Axios.post("http://localhost:5000/api/user/product/", obj1)
-      //console.log(JSON.stringify(obj1))
-
+    Axios.post("http://localhost:5000/api/createproduct", formData, {})
       .then((response) => {
-        console.log(response.json());
+        console.log(response);
 
         Swal.fire({ title: "created successfully", timer: 1500 });
       })
@@ -58,9 +50,9 @@ const AddProduct = (props) => {
       });
     setProductName("");
     setProductBrand("");
-    setproductPrice("");
+    setProductPrice("");
     setProductDescription("");
-    setPhoto("");
+    setProductPicture("");
   };
 
   return (
@@ -76,6 +68,7 @@ const AddProduct = (props) => {
       </h1>
       <div className="box3 rounded p-5">
         <form>
+          {productPicture && productPicture.length}
           <div>
             <input
               className="form-control mt-2"
@@ -84,9 +77,6 @@ const AddProduct = (props) => {
               placeholder="choose a file"
             />
           </div>
-          {photo !== null && (
-            <img src={photo} style={{ width: "100px", height: "100px" }} />
-          )}
           <div>
             <input
               type="text"
@@ -124,7 +114,7 @@ const AddProduct = (props) => {
               className="form-control mt-2"
               value={productPrice}
               placeholder="ProductPrice..."
-              onChange={(e) => setproductPrice(e.target.value)}
+              onChange={(e) => setProductPrice(e.target.value)}
             />
           </div>
 

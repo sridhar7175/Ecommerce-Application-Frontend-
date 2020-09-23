@@ -7,14 +7,14 @@ const AdminDb = () => {
   return (
     <div>
       <div className="userdashboard1 bg-success p-4 mt-1">
-        <h1 className="text-center mt-3 mb-3 text-white">
+        <h1 className="text-center mt-3 mb-3 text-white" style={{ fontFamily: "'Play', sans-serif" }}>
           Welcome to the Admin area
         </h1>
         <div className="container">
           <div className="row">
             <div className="col-md-4 mb-4">
               <div className="card">
-                <h4 className="card-header bg-dark text-white">
+                <h4 className="card-header bg-dark text-white" style={{ fontFamily: "'Play', sans-serif" }}>
                   Admin Navigation
                 </h4>
                 <ul className="list-group">
@@ -30,7 +30,7 @@ const AdminDb = () => {
                     </Link>
                   </li>
                   <li className="list-group-item">
-                  <Link to="/admin/products" className="nav-link text-success">
+                  <Link to="/admin/mangeproduct" className="nav-link text-success">
                     Manage Product
                   </Link>
                 </li>
@@ -44,7 +44,7 @@ const AdminDb = () => {
             </div>
             <div className="col-md-8 mb-5">
               <div className="card">
-                <h4 className="card-header">Admin Information</h4>
+                <h4 className="card-header" style={{ fontFamily: "'Play', sans-serif" }}>Admin Information</h4>
                 <ul className="list-group">
                   <li className="list-group-item">
                     <span className="badge badge-success mr-2">Name:{name}</span>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -8,7 +9,7 @@ const Login = () => {
     e.preventDefault();
     var body = { email: email, password: password };
 
-    Axios.post("http://localhost:5000/api/user/signin", body)
+    Axios.post("http://localhost:5000/api/signin", body)
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("userId", res.data._id);
@@ -25,13 +26,13 @@ const Login = () => {
     setPassword("");
   };
   return (
-    <div className="text-center container mt-5">
-      <h1>Sign In page</h1>
-      <h4 className="mt-2 mb-2">A page for user to sign in!</h4>
+    <div>
+    <div className="container mt-5 login-box">
+      <h5 className="pl-5">Login Here</h5>
       <form>
         <div>
           <input
-            type="text"
+            type="email"
             name="email"
             className="form-control mt-3"
             placeholder="Enter a Email....."
@@ -41,7 +42,7 @@ const Login = () => {
         </div>
         <div>
           <input
-            type="text"
+            type="password"
             name="password"
             className="form-control mt-3"
             placeholder="Enter a Password....."
@@ -52,7 +53,9 @@ const Login = () => {
         <button onClick={login} className="form-control btn-danger mt-3">
           Submit
         </button>
+        <p className="pl-4 mt-2">Don't have an account <Link to='/signup'>? Register</Link></p>
       </form>
+    </div>
     </div>
   );
 };

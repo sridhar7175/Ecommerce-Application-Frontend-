@@ -1,34 +1,41 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-
+import { generatePublicUrl } from "../../urlConfig";
+import { getProducts } from "../../redux/actions/productaction";
+import { connect } from "react-redux";
+import { products } from "../../redux/reducers/productreducer";
 const Product = (props) => {
   const [productNames, setProductNames] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
-
-  const FetechData = () => {
-    Axios.get("http://localhost:5000/api/user/product")
-      .then((productNames) => {
-        console.log(productNames);
-        setProductNames(productNames.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  console.log(props.productNames);
 
   useEffect(() => {
-    FetechData();
+    props.getProducts();
   }, []);
+
+  useEffect(() => {
+    console.log(props, "props");
+    setProductNames(props?.productNames?.productNames);
+
+    //setProductNames(props.productNames)
+  }, [props]);
+
   // const filternames = productNames.filter((productName) => {
   //   return productName.productName.toLowerCase().includes(search.toLowerCase());
   // });
 
   const AddTocart = (cart) => {};
-  //console.log(filternames.length,filternames,"product")
   return (
     <div className="container mt-5 ">
-      <h3 className="text-left mb-5">List of Products</h3>
+      <h3
+        className="text-left mb-5"
+        style={{ fontFamily: "'Play', sans-serif" }}
+      >
+        List of Products
+      </h3>
       <form className="form-inline text-center">
         <input
           className="form-control w-50 mb-5"
@@ -40,7 +47,7 @@ const Product = (props) => {
       </form>
       <div className="text-center">
         <div>
-          {productNames.map((productNam) => (
+          {productNames?.map((productNam) => (
             <div
               key={productNam._id}
               className="card1 "
@@ -51,7 +58,13 @@ const Product = (props) => {
               }}
             >
               <div>
-                <img src={productNam.photo.data.contentType} />
+                <img
+                  src={generatePublicUrl(productNam.productPicture[0]?.img)}
+                  width="250px"
+                  height="200px"
+                  style={{ borderRadius: "10px" }}
+                  alt="img"
+                />
               </div>
               <div>Name:{productNam.productName}</div>
               <div>Brand:{productNam.productBrand}</div>
@@ -66,10 +79,6 @@ const Product = (props) => {
                   Add To Cart
                 </button>
               </Link>
-              {/* <Link to="/signin">
-                {" "}
-                <button className="btn btn-info btn-sm mt-2">Buy Now</button>
-                </Link>*/}
             </div>
           ))}
         </div>
@@ -78,4 +87,15 @@ const Product = (props) => {
   );
 };
 
-export default Product;
+var mapStateToProps = (state) => {
+  // console.log(state)
+  return {
+    productNames: state.products,
+  };
+};
+
+var mapDispatchToProps = {
+  getProducts,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);
