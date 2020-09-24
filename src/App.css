@@ -206,6 +206,30 @@ h2 {
 } */
 /* -->Cart End-------> */
 
+/* --->Product Details Start------> */
+
+.pd1 h5{
+  font-family: "Quicksand", sans-serif;
+  /* color: #926E4D; */
+}
+.pd1 p{
+  font-family: "Quicksand", sans-serif;
+}
+.pd2 img{
+  border-radius: 20px;
+}
+.pd3 h4{
+  font-family: "Quicksand", sans-serif;
+}
+.pd4 h5{
+  font-family: 'Epilogue', sans-serif;
+}
+.pd4 li{
+  font-family: 'Zilla Slab', serif;
+  font-size: 18px;
+}
+/* -->Product Details End-----> */
+
 /* ---->Media Quireies Start-------> */
 @media only screen and (max-width: 600px) {
   .navbar-toggler {

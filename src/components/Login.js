@@ -6,11 +6,15 @@ import { Link } from "react-router-dom";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+   console.log("newprops",props)
 
   const login = (e) => {
     e.preventDefault();
-    var body = { email: email, password: password };
+    //var user = { email: email, password: password };
+   
     props.getLoginUser(email, password);
+    setEmail(props?.email?.email);
+    setPassword(props?.password?.password);
     // Axios.post("http://localhost:5000/api/signin", body)
     //   .then((res) => {
     //     console.log(res.data);
@@ -64,8 +68,9 @@ const Login = (props) => {
   );
 };
 var mapStateToProps = (state) => {
+  console.log("state",state)
   return {
-    users: state.loginUsers,
+    user: state.loginUsers,
   };
 };
 

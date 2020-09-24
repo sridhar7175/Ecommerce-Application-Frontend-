@@ -36,18 +36,10 @@ const Product = (props) => {
       >
         List of Products
       </h3>
-      <form className="form-inline text-center">
-        <input
-          className="form-control w-50 mb-5"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </form>
+
       <div className="text-center">
-        <div>
-          {productNames?.map((productNam) => (
+      
+          {productNames?.map((productNam,_id) => (
             <div
               key={productNam._id}
               className="card1 "
@@ -58,18 +50,20 @@ const Product = (props) => {
               }}
             >
               <div>
-                <img
-                  src={generatePublicUrl(productNam.productPicture[0]?.img)}
-                  width="250px"
-                  height="200px"
-                  style={{ borderRadius: "10px" }}
-                  alt="img"
-                />
+                <Link to="/productdetails">
+                  <img
+                    src={generatePublicUrl(productNam.productPicture[0]?.img)}
+                    width="250px"
+                    height="200px"
+                    style={{ borderRadius: "10px" }}
+                    alt="img"
+                  />
+                </Link>
               </div>
               <div>Name:{productNam.productName}</div>
               <div>Brand:{productNam.productBrand}</div>
-              <div>productDescription:{productNam.productDescription}</div>
-              <div>Price:{productNam.productPrice}.00</div>
+              <div>Description:{productNam.productDescription}</div>
+              <div>Price:₹{productNam.productPrice}.00</div>
               <Link to="/cart">
                 <button
                   className="btn btn-info btn-sm mt-2"
@@ -81,14 +75,12 @@ const Product = (props) => {
               </Link>
             </div>
           ))}
-        </div>
       </div>
     </div>
   );
 };
 
 var mapStateToProps = (state) => {
-  // console.log(state)
   return {
     productNames: state.products,
   };

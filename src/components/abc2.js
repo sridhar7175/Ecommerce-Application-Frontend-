@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.clear();
+    window.location.href = "/";
+  };
   //console.log(localStorage.getItem("role"))
   const data = localStorage.getItem("role");
 
@@ -40,7 +45,7 @@ const Header = () => {
                     Shop
                   </Link>
                 </li>
-                {/*  <li className="nav-item active">
+              {/*  <li className="nav-item active">
                   <Link className="nav-link text-white" to="/about">
                     AboutUs
                   </Link>
@@ -51,35 +56,51 @@ const Header = () => {
                     Cart
                   </Link>
                 </li>
-
-                <li className="nav-item active ">
-                  {data === "admin" ? (
-                    <Link className="nav-link text-white" to="/admin/dashboard">
-                      A.Dashboard
+                {localStorage.getItem("userId") != null ? (
+                  <React.Fragment>
+                    <li className="nav-item active ">
+                      {data === "admin" ? (
+                        <Link
+                          className="nav-link text-white"
+                          to="/admin/dashboard"
+                        >
+                          A.Dashboard
+                        </Link>
+                      ) : (
+                        <Link
+                          className="nav-link text-white"
+                          to="/user/dashboard"
+                        >
+                          U.Dashboard
+                        </Link>
+                      )}
+                    </li>
+                  </React.Fragment>
+                ) : (
+                  <li className="nav-item active ">
+                    <Link className="nav-link text-white" to="/signup">
+                      Signup
                     </Link>
-                  ) : (
-                    <Link className="nav-link text-white" to="/user/dashboard">
-                      U.Dashboard
+                  </li>
+                )}
+                {localStorage.getItem("userId") != null ? (
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link text-white"
+                      to="/"
+                      onClick={logout}
+                    >
+                      Logout
                     </Link>
-                  )}
-                </li>
-                <li className="nav-item active ">
-                  <Link className="nav-link text-white" to="/signup">
-                    Signup
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/">
-                    Logout
-                  </Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/signin">
-                    Signin
-                  </Link>
-                </li>
+                  </li>
+                ) : (
+                  <li className="nav-item">
+                    <Link className="nav-link text-white" to="/signin">
+                      Signin
+                    </Link>
+                  </li>
+                )}
+                <li className="nav-item"></li>
               </ul>
             </div>
           </nav>

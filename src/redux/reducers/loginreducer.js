@@ -10,19 +10,20 @@ export var loginUsers = (state = {}, action) => {
   switch (action.type) {
     case GET_LOGIN_STARTED:
       return {
-        users: [],
+        user: [],
         loading: true,
         error: null,
       };
     case GET_LOGIN_SUCCESS:
+      console.log(action)
       return {
-        users: action.users,
+        user: action.payload,
         loading: false,
         error: null,
       };
     case GET_LOGIN_FAILED:
       return {
-        users: [],
+        user: [],
         loading: false,
         error: action.error,
       };

@@ -14,6 +14,7 @@ import Manageproductspage from "./containers/adminpages/Manageproductspage";
 import Updateproductpage from "./containers/adminpages/Updateproductpage";
 import aboutpage from "./containers/commonpages/aboutpage";
 import Shoppage from "./containers/commonpages/Shoppage";
+import Productdetailspage from "./containers/adminpages/Productdetailspage";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             component={Updateproductpage}
           />
           <Route path="/buy" component={Buypage} />
+          <Route path='/productdetails' component={Productdetailspage}/>
         </Switch>
       </Router>
     </div>
