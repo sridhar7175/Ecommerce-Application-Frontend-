@@ -32,7 +32,7 @@ const Register = () => {
 
   return (
     <div className="">
-    <div className="container mt-5 register-box">
+    <div className="container mt-5 register-box mb-5">
       <h5 className="pl-5 mt-2">Register Here</h5>
       <form>
         <div>

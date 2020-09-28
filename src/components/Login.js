@@ -6,15 +6,23 @@ import { Link } from "react-router-dom";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-   console.log("newprops",props)
+  //const [isloggedin,setIsLoggedIn]=useState(false)
+  // console.log("newprops",props)
+
+
+// useEffect(()=>{
+//   console.log("Login",isloggedin)
+// },[isloggedin])
 
   const login = (e) => {
     e.preventDefault();
     //var user = { email: email, password: password };
+
+      //setIsLoggedIn(true)
+      
    
     props.getLoginUser(email, password);
-    setEmail(props?.email?.email);
-    setPassword(props?.password?.password);
+   
     // Axios.post("http://localhost:5000/api/signin", body)
     //   .then((res) => {
     //     console.log(res.data);
@@ -30,10 +38,12 @@ const Login = (props) => {
     //   });
     // setEmail("");
     //setPassword("");
+    setEmail("")
+    setPassword("")
   };
   return (
     <div>
-      <div className="container mt-5 login-box">
+      <div className="container mt-5 login-box mb-5">
         <h5 className="pl-5">Login Here</h5>
         <form>
           <div>
@@ -68,7 +78,7 @@ const Login = (props) => {
   );
 };
 var mapStateToProps = (state) => {
-  console.log("state",state)
+  //console.log("state",state)
   return {
     user: state.loginUsers,
   };

@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AdminDb = () => {
-  const name=(localStorage.getItem("name"))
-  const email=(localStorage.getItem('email'))
+ 
+ 
+ 
   return (
     <div>
       <div className="userdashboard1 bg-success p-4 mt-1">
@@ -19,7 +20,7 @@ const AdminDb = () => {
                 </h4>
                 <ul className="list-group">
                   <li className="list-group-item">
-                    <Link to="" className="nav-link text-success">
+                    <Link to={`/user/add/`} className="nav-link text-success">
                       Update my details
                     </Link>
                   </li>
@@ -47,11 +48,11 @@ const AdminDb = () => {
                 <h4 className="card-header" style={{ fontFamily: "'Play', sans-serif" }}>Admin Information</h4>
                 <ul className="list-group">
                   <li className="list-group-item">
-                    <span className="badge badge-success mr-2">Name:{name}</span>
+                    <span className="badge badge-success mr-2">Name</span>
                   </li>
                   <li className="list-group-item">
                     <span className="badge badge-success mr-2">
-                      Email:{email}
+                      email
                     </span>
                   </li>
                   <li className="list-group-item">

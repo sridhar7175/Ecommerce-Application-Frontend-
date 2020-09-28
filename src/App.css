@@ -7,7 +7,7 @@ h2 {
 }
 /* --->Header Start-------> */
 .header {
-  background-color: #ed017f;
+  /* background-color: #ed017f; */
 }
 .navbar-brand {
   font-family: "Quicksand", sans-serif;
@@ -15,6 +15,12 @@ h2 {
 .header .nav-item .nav-link {
   font-size: 18px;
   font-family: "Quicksand", sans-serif;
+}
+.nav-item :hover{
+  color: #ed017f !important;
+}
+.nav-link{
+  color: #000 !important;
 }
 /* --->Header End-------> */
 /* --->Home Start--> */
@@ -89,6 +95,27 @@ h2 {
   background-clip: border-box;
   margin-bottom: 50px;
   margin-top: 20px;
+}
+.product123{
+  display: flex !important;
+}
+.product124{
+  text-align: right !important;
+  margin-left: 650px;
+}
+.productbutton{
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+.productbutton:hover {
+  opacity: 0.7;
 }
 .bg-info,
 .btn-info {
@@ -230,6 +257,65 @@ h2 {
 }
 /* -->Product Details End-----> */
 
+/* ---->User Dashboard-------> */
+.ud1{
+  background-color: #F7F7F7;
+  width: 100%;
+  height: 70px;
+  padding-left: 200px;
+}
+.ud1 h5,h6{
+  font-family: 'Assistant', sans-serif;
+}
+.ud2{
+  margin-left: 50px;
+  background-color: whitesmoke;
+}
+.ud2 li{
+  list-style-type: none;
+  color: #000 !important;
+}
+.ud3 {
+  text-decoration: none !important;
+  font-size: 15px;
+  color: #000 !important;
+  font-family: 'Varela Round', sans-serif;
+  text-transform: capitalize;
+}
+.ud4{
+  border-bottom: 1px solid black !important;
+  width: 349px;
+}
+.ud5{
+  border-right:2px solid brown !important;
+  height: 350px !important;
+}
+.ud6{
+  font-family: 'Epilogue', sans-serif;
+}
+.btn1 {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Green */
+.success {
+  border-color:rebeccapurple;
+  color:black;
+}
+
+.success:hover {
+  background-color:black;
+  color: white;
+}
+.user-form1 .user-form2{
+  width: 500px !important;
+}
+
 /* ---->Media Quireies Start-------> */
 @media only screen and (max-width: 600px) {
   .navbar-toggler {
@@ -350,6 +436,29 @@ h2 {
     border-radius: 10px;
     margin-top: 10px !important;
     margin-bottom: 30px;
+  }
+  .ud1{
+    background-color: #F7F7F7;
+    width: 100%;
+    height: 70px;
+    padding-left: 70px;
+    font-family: 'Epilogue', sans-serif;
+  }
+  .ud2{
+    margin-left: 10px;
+  }
+  
+  .ud4{
+    border-bottom: 1px solid black !important;
+    width: 250px;
+  }
+  .ud5{
+    border-right:2px solid brown !important;
+    width: 250px;
+  }
+  .product124{
+    text-align: right !important;
+    margin-left: 100px;
   }
 }
 /* ---->Media Quireies End-------> */

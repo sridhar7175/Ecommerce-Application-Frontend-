@@ -4,7 +4,7 @@ export const GET_LOGIN_STARTED = "GET_LOGIN_STARTED";
 export const GET_LOGIN_SUCCESS = "GET_LOGIN_SUCCESS";
 export const GET_LOGIN_FAILED = "GET_LOGIN_FAILED";
 
-export const LOGOUT='LOGOUT';
+
 
 export function getLoginStatred() {
   return {
@@ -27,11 +27,7 @@ export function getLoginFailed(error) {
   };
 }
 
-export function logout(){
-  return{
-    type:LOGOUT
-  }
-}
+
 
 //Thunk Action
 export function getLoginUser(email,password) {

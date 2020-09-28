@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {AiOutlineShoppingCart} from 'react-icons/ai'
 
 const Header = () => {
   //console.log(localStorage.getItem("role"))
@@ -10,7 +11,7 @@ const Header = () => {
       <div className="header">
         <div className="container text-white">
           <nav className="navbar navbar-expand-lg navbar-light ">
-            <Link className="navbar-brand text-white" to="/">
+            <Link className="navbar-brand" to="/">
               Amazon
             </Link>
             <button
@@ -31,55 +32,49 @@ const Header = () => {
             >
               <ul className="navbar-nav  ml-auto">
                 <li className="nav-item active">
-                  <Link className="nav-link text-white" to="/">
+                  <Link className="nav-link" to="/">
                     Home
                   </Link>
                 </li>
-                <li className="nav-item active">
-                  <Link className="nav-link text-white" to="/shop">
-                    Shop
+                <li className="nav-item ">
+                  <Link className="nav-link " to="/shop">
+                    Products
                   </Link>
                 </li>
-                {/*  <li className="nav-item active">
-                  <Link className="nav-link text-white" to="/about">
-                    AboutUs
-                  </Link>
-                </li>
-  */}
-                <li className="nav-item active ">
-                  <Link className="nav-link text-white" to="/cart">
-                    Cart
-                  </Link>
-                </li>
-
-                <li className="nav-item active ">
-                  {data === "admin" ? (
-                    <Link className="nav-link text-white" to="/admin/dashboard">
+                <li className="nav-item  ">
+                 
+                    <Link className="nav-link" to="/admin/dashboard">
                       A.Dashboard
                     </Link>
-                  ) : (
-                    <Link className="nav-link text-white" to="/user/dashboard">
+                
+                    <Link className="nav-link" to="/user/dashboard">
                       U.Dashboard
                     </Link>
-                  )}
+                 
                 </li>
-                <li className="nav-item active ">
-                  <Link className="nav-link text-white" to="/signup">
+                <li className="nav-item  ">
+                  <Link className="nav-link" to="/signup">
                     Signup
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/">
+                  <Link className="nav-link" to="/">
                     Logout
                   </Link>
                 </li>
 
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/signin">
+                <li className="nav-item ">
+                  <Link className="nav-link" to="/signin">
                     Signin
                   </Link>
                 </li>
+                <li className="nav-item  ">
+                <Link className="nav-link" to="/cart">
+                 <AiOutlineShoppingCart/> Cart
+                </Link>
+              </li>
+              
               </ul>
             </div>
           </nav>

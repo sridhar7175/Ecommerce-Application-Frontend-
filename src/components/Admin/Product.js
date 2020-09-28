@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { generatePublicUrl } from "../../urlConfig";
 import { getProducts } from "../../redux/actions/productaction";
 import { connect } from "react-redux";
-import { products } from "../../redux/reducers/productreducer";
 const Product = (props) => {
   const [productNames, setProductNames] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,12 +29,21 @@ const Product = (props) => {
   const AddTocart = (cart) => {};
   return (
     <div className="container mt-5 ">
+    <div className="product123 mb-5">
       <h3
-        className="text-left mb-5"
+        className="text-left "
         style={{ fontFamily: "'Play', sans-serif" }}
       >
-        List of Products
+        All Products
       </h3>
+      <select className="product124 w-25">
+      <option>Below Rs.500</option>
+      <option>Rs.500-1000</option>
+      <option>Rs.1500-2000</option>
+      <option>Rs.2500-3500</option>
+    
+      </select>
+      </div>
 
       <div className="text-center">
       
@@ -66,7 +74,7 @@ const Product = (props) => {
               <div>Price:₹{productNam.productPrice}.00</div>
               <Link to="/cart">
                 <button
-                  className="btn btn-info btn-sm mt-2"
+                  className=" mt-4 productbutton"
                   style={{ marginRight: "10px" }}
                   onClick={() => AddTocart(productNam)}
                 >

@@ -13,7 +13,7 @@ const ProductDetails = (props) => {
         </p>
         <div className="row">
           <div className="col-sm-6 pd2 mt-2">
-            <img src="images/asus.jpg" alt="pad" width="350px" height="300px" />
+            <img src="images/macbook.jpg" alt="pad" width="350px" height="300px" />
           </div>
           <div className="col-sm-6 pd3 mt-3">
             <h4>
