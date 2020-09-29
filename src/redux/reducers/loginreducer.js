@@ -4,9 +4,8 @@ import {
   GET_LOGIN_FAILED,
 } from "../actions/loginaction";
 
-
 export var loginUsers = (state = {}, action) => {
-  console.log(action)
+  console.log(action);
   switch (action.type) {
     case GET_LOGIN_STARTED:
       return {
@@ -15,7 +14,7 @@ export var loginUsers = (state = {}, action) => {
         error: null,
       };
     case GET_LOGIN_SUCCESS:
-      console.log(action)
+      console.log(action);
       return {
         user: action.payload,
         loading: false,
@@ -23,9 +22,9 @@ export var loginUsers = (state = {}, action) => {
       };
     case GET_LOGIN_FAILED:
       return {
-        user: [],
         loading: false,
-        error: action.error,
+        error: action.payload.message,
+        ...state,
       };
     default:
       return state;
