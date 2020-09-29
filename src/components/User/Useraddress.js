@@ -80,7 +80,7 @@ const Useraddress = () => {
           </ul>
         </div>
       </div>
-          <div className="col-sm-4 mt-5 mb-5 ud6">
+          <div className="col-sm-4 mt-5 mb-5 ud6 ml-5">
             <h6 className="mt-2">
               The following addresses will be used on the checkout page by
               default.

@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {AiOutlineShoppingCart} from 'react-icons/ai'
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Header = () => {
   //console.log(localStorage.getItem("role"))
   const data = localStorage.getItem("role");
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      const isTop = window.screenY < 100;
+      if (isTop !== true) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    });
+    //window.removeEventListener("scroll")
+  }, []);
 
   return (
-    <div>
-      <div className="header">
+    <div className="header">
+      <div className={scrolled ? "nav scrolled" : "nav"}>
         <div className="container text-white">
           <nav className="navbar navbar-expand-lg navbar-light ">
             <Link className="navbar-brand" to="/">
@@ -42,15 +54,9 @@ const Header = () => {
                   </Link>
                 </li>
                 <li className="nav-item  ">
-                 
-                    <Link className="nav-link" to="/admin/dashboard">
-                      A.Dashboard
-                    </Link>
-                
-                    <Link className="nav-link" to="/user/dashboard">
-                      U.Dashboard
-                    </Link>
-                 
+                  <Link className="nav-link" to="/accountinfo">
+                    Dashboard
+                  </Link>
                 </li>
                 <li className="nav-item  ">
                   <Link className="nav-link" to="/signup">
@@ -70,11 +76,10 @@ const Header = () => {
                   </Link>
                 </li>
                 <li className="nav-item  ">
-                <Link className="nav-link" to="/cart">
-                 <AiOutlineShoppingCart/> Cart
-                </Link>
-              </li>
-              
+                  <Link className="nav-link" to="/cart">
+                    <AiOutlineShoppingCart /> Cart
+                  </Link>
+                </li>
               </ul>
             </div>
           </nav>

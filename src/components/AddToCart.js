@@ -5,7 +5,7 @@ const AddToCart = () => {
 
   return (
     <div>
-      <div className="container-fluid mt-3 cart1">
+      <div className="container-fluid mt-3 cart1 mb-5">
         <div className="row">
           <div className="col-sm-8 mt-3">
             <div className="cart2">
