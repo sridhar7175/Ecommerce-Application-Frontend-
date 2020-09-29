@@ -1,20 +1,36 @@
-import React from 'react'
-import Header from '../components/Header'
-import Home from '../components/Home'
-import Product from '../components/Admin/Product'
-import {connect} from 'react-redux';
-import Footer from '../components/Footer';
+import React, { useEffect } from "react";
+import Header from "../components/Header";
+import Home from "../components/Home";
+import Product from "../components/Admin/Product";
+import { getProducts } from "../redux/actions/productaction";
 
+import { connect } from "react-redux";
+import Footer from "../components/Footer";
 
 const Homepage = (props) => {
-    return (
-        <div>
-            <Header/>
-            <Home/>
-            <Product/>
-            <Footer/>
-        </div>
-    )
-}
+  console.log(props, "props");
+  useEffect(() => {
+    props.getProducts();
+  }, []);
+  return (
+    <div>
+      <Header />
+      <Home />
+      <Product products={props?.all?.products} />
+      <Footer />
+    </div>
+  );
+};
 
-export default connect(state=>({all:state}),{})(Homepage)
+var mapStateToProps = (state) => {
+  return {
+    productNames: state.products,
+    user: state.loginUsers,
+  };
+};
+
+var mapDispatchToProps = {
+  getProducts,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);

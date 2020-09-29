@@ -9,7 +9,6 @@ import thunk from "redux-thunk";
 const rootStore = combineReducers({
   loginUsers,
   products,
- 
 });
 const store = createStore(
   rootStore,
