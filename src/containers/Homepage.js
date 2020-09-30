@@ -5,7 +5,7 @@ import Product from "../components/Admin/Product";
 import { getProducts } from "../redux/actions/productaction";
 
 import { connect } from "react-redux";
-import Footer from "../components/Footer";
+import Footer from "../components/Common/Footer";
 
 const Homepage = (props) => {
   console.log(props, "props");

@@ -6,8 +6,6 @@ import Homepage from "./containers/Homepage";
 import Registerpage from "./containers/Registerpage";
 import Loginpage from "./containers/Loginpage";
 import Cartpage from "./containers/Cartpage";
-import UserDashboardpage from "./containers/userdashboardpages/UserDashboardpage";
-import AdminDspage from "./containers/adminpages/AdminDspage";
 import Addproductpage from "./containers/adminpages/Addproductpage";
 import Buypage from "./containers/buypages/Buypage";
 import Manageproductspage from "./containers/adminpages/Manageproductspage";
@@ -19,6 +17,7 @@ import AccountInfopage from "./containers/accountpages.js/AccountInfopage";
 import ShippingDetailspage from "./containers/accountpages.js/ShippingDetailspage";
 import Wishlistpage from "./containers/accountpages.js/Wishlistpage";
 import Orderspage from "./containers/accountpages.js/Orderspage";
+import AdminDashboardpage from "./containers/adminpages/AdminDashboardpage";
 
 function App() {
   return (
@@ -30,11 +29,11 @@ function App() {
           <Route path="/signup" component={Registerpage} />
           <Route path="/signin" component={Loginpage} />
           <Route path="/cart" component={Cartpage} />
-          <Route path="/accountinfo" component={AccountInfopage}/>
-          <Route path="/shippingDetails" component={ShippingDetailspage}/>
-          <Route path="/wishlist" component={Wishlistpage}/>
-          <Route path="/myorder" component={Orderspage}/>
-          <Route path="/admin/dashboard" component={AdminDspage} />
+          <Route path="/accountinfo" component={AccountInfopage} />
+          <Route path="/shippingDetails" component={ShippingDetailspage} />
+          <Route path="/wishlist" component={Wishlistpage} />
+          <Route path="/myorder" component={Orderspage} />
+          <Route path="/admin/dashboard" component={AdminDashboardpage} />
           <Route path="/admin/create/product" component={Addproductpage} />
           <Route path="/admin/mangeproduct" component={Manageproductspage} />
           <Route
@@ -42,7 +41,7 @@ function App() {
             component={Updateproductpage}
           />
           <Route path="/buy" component={Buypage} />
-          <Route path='/productdetails' component={Productdetailspage}/>
+          <Route path="/productdetails" component={Productdetailspage} />
         </Switch>
       </Router>
     </div>

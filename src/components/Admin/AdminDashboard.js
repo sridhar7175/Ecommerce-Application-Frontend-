@@ -1,34 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Axios from "axios";
 import { RiAdminFill } from "react-icons/ri";
 import { FiBox } from "react-icons/fi";
 import { AiOutlineMedicineBox } from "react-icons/ai";
 import { CgToolbox } from "react-icons/cg";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
-
-const Manageproducts = () => {
-  const [productNames, setProductNames] = useState([]);
-  const FetechData = () => {
-    Axios.get("http://localhost:5000/api/getproduct")
-      .then((productNames) => {
-        console.log(productNames);
-        setProductNames(productNames.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    FetechData();
-  }, []);
-
-  const onDelete = (id) => {
-    Axios.delete(
-      "http://localhost:5000/api/deleteproduct/" + id
-    ).then((response) => FetechData());
-  };
+const AdminDashboard = () => {
   return (
     <div>
       <div className="container-fluid mb-5 mt-5">
@@ -82,40 +59,25 @@ const Manageproducts = () => {
               </div>
             </div>
           </div>
-          <div className="col-sm-9">
-            <div className="bg-info p-4 ">
-              <Link className="btn btn-warning" to={`/admin/dashboard`}>
-                <span className="">Admin Home</span>
-              </Link>
-              <h2 className="text-center text-white my-3">Total products</h2>
-              <div className="container p-4 box2">
-                {productNames.map((productname, index) => {
-                  return (
-                    <div key={index} className="row">
-                      <div className="col-sm-4">
-                        <h3 className=" text-white text-left">
-                          {productname.productName}
-                        </h3>
-                      </div>
-                      <div className="col-sm-4">
-                        <Link
-                          className="btn btn-success"
-                          to={`/admin/product/update/${productname._id}`}
-                        >
-                          <span className="">Update</span>
-                        </Link>
-                      </div>
-                      <div className="col-sm-4">
-                        <button
-                          onClick={() => onDelete(productname._id)}
-                          className="btn btn-danger"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
+          <div className="col-sm-9 newad4 pt-3">
+            <div className="row">
+              <div className="col-sm-4 mt-2">
+                <div className="admin-card pl-2 text-white pt-3">
+                  <h5>5</h5>
+                  <h6>Registered User</h6>
+                </div>
+              </div>
+              <div className="col-sm-4 mt-2">
+                <div className="admin-card1 pl-2 text-white pt-3">
+                  <h5>20</h5>
+                  <h6>Orders</h6>
+                </div>
+              </div>
+              <div className="col-sm-4">
+                <div className="admin-card2 pl-2 text-white pt-3">
+                  <h5>20</h5>
+                  <h6>Daily Vistior</h6>
+                </div>
               </div>
             </div>
           </div>
@@ -125,4 +87,4 @@ const Manageproducts = () => {
   );
 };
 
-export default Manageproducts;
+export default AdminDashboard;

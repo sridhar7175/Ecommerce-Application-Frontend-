@@ -20,6 +20,7 @@ h2 {
   font-size: 18px;
   font-family: "Quicksand", sans-serif;
 }
+
 .nav-item :hover {
   color: #ed017f !important;
 }
@@ -32,7 +33,7 @@ h2 {
   background-color: #ed017f;
   font-size: 20px;
   text-decoration: none !important;
-  color: white;
+  color: white !important;
   padding: 5px 15px 5px 15px;
 }
 .carousel-caption {
@@ -50,7 +51,7 @@ h2 {
 }
 .register-box {
   width: 400px !important;
-  height: 400px;
+  height: 450px;
   font-weight: 400;
   background-color: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -71,7 +72,7 @@ h2 {
 }
 .login-box {
   width: 400px !important;
-  height: 300px;
+  height: 350px;
   font-weight: 400;
   background-color: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -191,7 +192,61 @@ h2 {
 .footer p {
   font-family: "Quicksand", sans-serif;
 }
+.footer-form {
+  width: 70%;
+  box-sizing: border-box;
+  /* border: 3px solid #ccc; */
+  border: none !important;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 10px;
+}
+
+.footer-form:focus {
+  border: 3px solid #555 !important;
+}
 /* -->Footer End------> */
+
+/* --->Admin Dashboard Start----> */
+.newad1 {
+  background-color: #333945 !important;
+  width: 100% !important;
+  height: 400px;
+  border-radius: 10px;
+  font-family: "PT Sans", sans-serif;
+}
+.newad2 li {
+  list-style-type: none !important;
+}
+.newad3 {
+  text-decoration: none !important;
+  color: white !important;
+}
+.newad4 {
+  background-color: #eaf0f1;
+  width: 100% !important;
+}
+.admin-card {
+  background-color: #43be31 !important;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+}
+.admin-card1 {
+  background-color: #ec4849;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+}
+.admin-card2 {
+  background-color: #4834df;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+/* --->Admin Dashboard End */
 
 /* -->Cart Start-------> */
 .cart1 {
@@ -267,38 +322,44 @@ h2 {
 }
 /* -->Product Details End-----> */
 
-
 /* ---> Account Start---->*/
-.ac1{
-  background-color: #F5F5F5;
+.ac1 {
+  background-color: #f5f5f5;
   width: 100%;
+  height: 40px;
   padding-left: 100px;
+  padding-top: 8px;
+  font-size: 15px;
+  font-family: "Epilogue", sans-serif;
 }
-.ac1 .ac2{
+.ac1 .ac2 {
   text-decoration: none !important;
   color: #000;
 }
-.ac3{
+.ac3 {
   border: 2px solid red;
- height: 300px !important;
+  height: 300px !important;
 }
-.ac4{
+.ac4 {
   border-bottom: 1px solid black;
   width: 200px;
 }
-.ac5 li{
+.ac5 li {
   list-style-type: none !important;
 }
-.ac6{
+.ac6 {
   text-decoration: none !important;
   color: black !important;
-  font-family: 'Peddana', serif;
+  font-family: "Peddana", serif;
 }
-.ac7{
+.ac5 li :hover {
+  color: #ff362e !important;
+}
+.ac7 {
   border: 2px solid red !important;
   height: 500px;
 }
-.form1{
+.form1 {
   width: 70%;
   padding: 5px 5px;
   box-sizing: border-box;
@@ -307,29 +368,29 @@ h2 {
   transition: 0.5s;
   outline: none;
 }
-.form1:focus{
+.form1:focus {
   border: 3px solid #555;
 }
-.btn3{
-  background-color: #E71C23;
+.btn3 {
+  background-color: #e71c23;
   color: white;
   border: none;
-  padding:10px 10px 10px 10px ;
+  padding: 10px 10px 10px 10px;
   border-radius: 10px;
 }
 /* -->shippingd1---> */
-.shippingd1{
+.shippingd1 {
   border: 2px solid red !important;
   height: 500px;
 }
-.shippingd3{
+.shippingd3 {
   width: 200px !important;
 }
-.btn4{
-  background-color: #E71C23;
+.btn4 {
+  background-color: #e71c23;
   color: white;
   border: none;
-  padding:5px 5px 5px 5px ;
+  padding: 5px 5px 5px 5px;
   border-radius: 10px;
 }
 /* --->Account End-----> */
@@ -357,7 +418,7 @@ h6 {
   text-decoration: none !important;
   font-size: 15px;
   color: #000 !important;
-  font-family: 'Abel', sans-serif;
+  font-family: "Abel", sans-serif;
   text-transform: capitalize;
 }
 .ud4 {
@@ -413,7 +474,7 @@ h6 {
   }
   .register-box {
     width: 300px !important;
-    height: 400px;
+    height: 500px;
     font-weight: 400;
     background-color: #fff;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
@@ -538,14 +599,14 @@ h6 {
     text-align: right !important;
     margin-left: 100px;
   }
-  .ac3{
+  .ac3 {
     margin-left: 10px;
     border: 2px solid red;
     width: 350px !important;
-   height: 300px !important;
+    height: 300px !important;
   }
-  .ac1{
-    background-color: #F5F5F5;
+  .ac1 {
+    background-color: #f5f5f5;
     width: 100%;
     padding-left: 5px;
   }

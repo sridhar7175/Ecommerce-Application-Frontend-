@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiFillShopping } from "react-icons/ai";
 import { FaFirstOrderAlt } from "react-icons/fa";
 import { GiSelfLove } from "react-icons/gi";
 import { BsFillLockFill } from "react-icons/bs";
-import {GoPlus} from "react-icons/go"
+import { GoPlus } from "react-icons/go";
 
 const ShippingDetails = () => {
-const [open,setOpen]=useState(false)
-const OpenClick=()=>{
-    setOpen(true)
-}
-    return (
-        <div>
-        <div className="mb-5">
+  const [open, setOpen] = useState(false);
+  const OpenClick = () => {
+    setOpen(true);
+  };
+  return (
+    <div>
+      <div className="mb-5">
         <div className="ac1">
           <Link className="pl-5 ac2" to="/">
             Home
@@ -59,45 +59,85 @@ const OpenClick=()=>{
               </div>
             </div>
             <div className="col-md-8  mt-5 pl-4 pb-5">
-              <div className="shippingd1 pl-3 pt-4">
-              <h4>Add a new address <Link style={{color:"dark"}} onClick={OpenClick}><GoPlus/></Link> </h4>
-              <form>
-              <div className="shippingd2" style={{display:"flex"}}>
-              <input type="text" className="shippingd3" placeholder="Full Name"/>
-              <input type="text" className="shippingd3 ml-3 " placeholder="Mobile Number"/>
-              <input type="text" className="shippingd3 ml-3" placeholder="Pin code"/>
+              <div className="shippingd1 pt-4">
+                <h5 className="pl-4">
+                  Add a new address
+                  <Link
+                    style={{ color: "black", paddingLeft: "5px" }}
+                    onClick={OpenClick}
+                  >
+                    <GoPlus />
+                  </Link>
+                </h5>
+                <form>
+                  <div
+                    className="shippingd2"
+                    style={{ display: "inline-block" }}
+                  >
+                    <input
+                      type="text"
+                      className="shippingd3 mt-2 ml-3"
+                      placeholder="Full Name"
+                    />
+                    <input
+                      type="text"
+                      className="shippingd3 mt-2 ml-3"
+                      placeholder="Mobile Number"
+                    />
+                    <input
+                      type="text"
+                      className="shippingd3 mt-2 ml-3"
+                      placeholder="Pin code"
+                    />
+                  </div>
+                  <div
+                    className="shippingd2 mt-3"
+                    style={{ display: "inline-block" }}
+                  >
+                    <input
+                      type="text"
+                      className="shippingd3 mt-2 ml-3"
+                      placeholder="Flat,house no,building"
+                    />
+                    <input
+                      type="text"
+                      className="shippingd3 mt-2 ml-3"
+                      placeholder="Area,colonly,street"
+                    />
+                    <input
+                      type="text"
+                      className="shippingd3 mt-2 ml-3"
+                      placeholder="LandMark "
+                    />
+                  </div>
+                  <div
+                    className="shippingd2 mt-3"
+                    style={{ display: "inline-block" }}
+                  >
+                    <select className=" shippingd3 mt-2 ml-3">
+                      <option>Select State</option>
+                      <option>AndharaPradesh</option>
+                      <option>Telagana</option>
+                      <option>Karnataka</option>
+                    </select>
+                    <select className="shippingd3 mt-2 ml-3">
+                      <option>Select City</option>
+                    </select>
+                    <select className="shippingd3 mt-2 ml-3">
+                      <option>Select Address</option>
+                      <option>Home</option>
+                      <option>Office</option>
+                    </select>
+                  </div>
+                  <button className="btn4 mt-3 ml-3">Save Address</button>
+                </form>
               </div>
-              <div className="shippingd2 mt-3" style={{display:"flex"}}>
-              <input type="text" className="shippingd3"  placeholder="Flat,house no,building"/>
-              <input type="text" className="ml-3 shippingd3" placeholder="Area,colonly,street"/>
-              <input type="text" className="ml-3 shippingd3" placeholder="LandMark "/>
-              </div>
-              <div className="shippingd2 mt-3" style={{display:"flex"}}>
-              <select className=" shippingd3">
-              <option>Select State</option>
-              <option>AndharaPradesh</option>
-              <option>Telagana</option>
-              <option>Karnataka</option>
-              </select>
-              <select className="shippingd3 ml-3">
-              <option>Select City</option>
-              </select>
-              <select className="shippingd3 ml-3">
-              <option>Select Address</option>
-              <option>Home</option>
-              <option>Office</option>
-              </select>
-              </div>
-              <button className="btn4 mt-3">Save Address</button>
-              </form>
-              </div>
-            
             </div>
           </div>
         </div>
-        </div>
-        </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default ShippingDetails
+export default ShippingDetails;

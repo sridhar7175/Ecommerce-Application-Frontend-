@@ -14,28 +14,29 @@ const Footer = () => {
             <div className="text-white footer1 " style={{ display: "flex" }}>
               <Link
                 className="text-white pr-3 mt-2 footer2"
-                style={{ fontSize: "23px" }} to='/'
+                style={{ fontSize: "23px" }}
+                to="/"
               >
                 <FaFacebook />
               </Link>
               <Link
                 className="text-white pr-3 mt-2 footer3"
                 style={{ fontSize: "23px" }}
-                to='/'
+                to="/"
               >
                 <AiOutlineInstagram />
               </Link>
               <Link
                 className="text-white pr-3 mt-2 footer4"
                 style={{ fontSize: "23px" }}
-                to='/'
+                to="/"
               >
                 <SiGmail />
               </Link>
               <Link
                 className="text-white pr-3 mt-2 footer4"
                 style={{ fontSize: "23px" }}
-                to='/'
+                to="/"
               >
                 <AiFillTwitterCircle />
               </Link>
@@ -44,19 +45,27 @@ const Footer = () => {
           <div className="col-md-4 mb-3">
             <h6 className="text-white">COMPANY</h6>
             <div className="footer6">
-              <Link className="text-white mt-2 footer6 mb-2" to='/'>Contact Us</Link>
+              <Link className="text-white mt-2 footer6 mb-2" to="/">
+                Contact Us
+              </Link>
               <br />
-              <Link className="text-white mt-2 footer6" to='/'>Track Shipment</Link>
+              <Link className="text-white mt-2 footer6" to="/">
+                Track Shipment
+              </Link>
               <br />
-              <Link className="text-white mt-2 footer6" to='/'>Privacy Policy</Link>
+              <Link className="text-white mt-2 footer6" to="/">
+                Privacy Policy
+              </Link>
               <br />
-              <Link className="text-white mt-2 footer6" to='/'>
+              <Link className="text-white mt-2 footer6" to="/">
                 Returns And Exchange Policy
               </Link>
               <br />
-              <Link className="text-white mt-2 footer6" to='/'>Shipping Policy</Link>
+              <Link className="text-white mt-2 footer6" to="/">
+                Shipping Policy
+              </Link>
               <br />
-              <Link className="text-white mt-2 footer6" to='/'>
+              <Link className="text-white mt-2 footer6" to="/">
                 Terms & Conditions
               </Link>
               <br />
@@ -67,13 +76,18 @@ const Footer = () => {
             <form>
               <input
                 type="text"
-                className="form-control1"
+                className="footer-form"
                 placeholder=" Your Email(required)"
               />
               <br />
               <button className="btn mt-2 text-white ml-2">Signup</button>
             </form>
-            <img src="images/cards.png" className="mt-2" alt="img" width="300px"/>
+            <img
+              src="images/cards.png"
+              className="mt-2"
+              alt="img"
+              width="300px"
+            />
           </div>
         </div>
       </div>

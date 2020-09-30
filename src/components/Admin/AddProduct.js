@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { RiAdminFill } from "react-icons/ri";
+import { FiBox } from "react-icons/fi";
+import { AiOutlineMedicineBox } from "react-icons/ai";
+import { CgToolbox } from "react-icons/cg";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 
 const AddProduct = (props) => {
   const [productName, setProductName] = useState("");
@@ -56,75 +61,132 @@ const AddProduct = (props) => {
   };
 
   return (
-    <div className="container p-3 mt-3 mb-5 pb-5 bg-info text-white">
-      <Link className="btn btn-warning" to={`/admin/dashboard`}>
-        <span className="">Admin Home</span>
-      </Link>
-      <h1
-        className="pt-3 text-center"
-        style={{ fontFamily: "Alata, sans-serif" }}
-      >
-        Add New Products here!
-      </h1>
-      <div className="box3 rounded p-5">
-        <form>
-          {productPicture && productPicture.length}
-          <div>
-            <input
-              className="form-control mt-2"
-              onChange={(e) => handlePhoto(e)}
-              type="file"
-              placeholder="choose a file"
-            />
+    <div>
+      <div className="container-fluid mb-5 mt-5">
+        <div className="row">
+          <div className="col-sm-3">
+            <div className="newad1 pl-3 pt-4">
+              <img
+                src="https://secure.gravatar.com/avatar/053467956553007b62a4cc9eb47ad16d?s=70&d=mm&r=g"
+                alt="aa"
+                style={{ borderRadius: "10px" }}
+              />
+              <h5 className="mt-2 text-white">Admin Dashboard</h5>
+              <div className="newad2">
+                <ul className="mt-2">
+                  <li className="mt-1">
+                    <Link className="newad3 mt-2" to="/admin/dashboard">
+                      <RiAdminFill /> Dashboard
+                    </Link>
+                  </li>
+                  <li className="mt-1">
+                    <Link className="newad3 mt-2" to="/admin/create/product">
+                      <FiBox /> Create Product
+                    </Link>
+                  </li>
+                  <li className="mt-1">
+                    <Link className="newad3 mt-2" to="/admin/mangeproduct">
+                      <FiBox /> Manageproduct
+                    </Link>
+                  </li>
+                  <li className="mt-1">
+                    <Link className="newad3 mt-2" to="/admin/dashboard">
+                      <AiOutlineMedicineBox /> Createcategories
+                    </Link>
+                  </li>
+                  <li className="mt-1">
+                    <Link className="newad3 mt-2" to="/admin/dashboard">
+                      <AiOutlineMedicineBox /> Managecategories
+                    </Link>
+                  </li>
+                  <li className="mt-1">
+                    <Link className="newad3 mt-2" to="/admin/Orders">
+                      <CgToolbox /> Orders
+                    </Link>
+                  </li>
+                  <li className="mt-1">
+                    <Link className="newad3 mt-2" to="/admin/Users">
+                      <AiOutlineUsergroupAdd /> User
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div>
-            <input
-              type="text"
-              name="productName"
-              className="form-control mt-2"
-              value={productName}
-              placeholder="ProductName..."
-              onChange={onChangeProduct}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              name="productBrand"
-              className="form-control mt-2"
-              value={productBrand}
-              placeholder="ProductBrand..."
-              onChange={(e) => setProductBrand(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              name="productDescription"
-              className="form-control mt-2"
-              value={productDescription}
-              placeholder="productDescription..."
-              onChange={(e) => setProductDescription(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              name="productPrice"
-              className="form-control mt-2"
-              value={productPrice}
-              placeholder="ProductPrice..."
-              onChange={(e) => setProductPrice(e.target.value)}
-            />
-          </div>
+          <div className="col-sm-9">
+            <div className="container p-3  mb-5 pb-5 bg-info text-white">
+              <Link className="btn btn-warning" to={`/admin/dashboard`}>
+                <span className="">Admin Home</span>
+              </Link>
+              <h1
+                className="pt-3 text-center"
+                style={{ fontFamily: "Alata, sans-serif" }}
+              >
+                Add New Products here!
+              </h1>
+              <div className="box3 rounded p-5">
+                <form>
+                  {productPicture && productPicture.length}
+                  <div>
+                    <input
+                      className="form-control mt-2"
+                      onChange={(e) => handlePhoto(e)}
+                      type="file"
+                      placeholder="choose a file"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      name="productName"
+                      className="form-control mt-2"
+                      value={productName}
+                      placeholder="ProductName..."
+                      onChange={onChangeProduct}
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      name="productBrand"
+                      className="form-control mt-2"
+                      value={productBrand}
+                      placeholder="ProductBrand..."
+                      onChange={(e) => setProductBrand(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      name="productDescription"
+                      className="form-control mt-2"
+                      value={productDescription}
+                      placeholder="productDescription..."
+                      onChange={(e) => setProductDescription(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      name="productPrice"
+                      className="form-control mt-2"
+                      value={productPrice}
+                      placeholder="ProductPrice..."
+                      onChange={(e) => setProductPrice(e.target.value)}
+                    />
+                  </div>
 
-          <button
-            onClick={addproduct}
-            className="mt-3 mb-4 form-control btn-success"
-          >
-            CreateProduct
-          </button>
-        </form>
+                  <button
+                    onClick={addproduct}
+                    className="mt-3 mb-4 form-control btn-success"
+                  >
+                    CreateProduct
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

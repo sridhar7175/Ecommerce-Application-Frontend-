@@ -4,13 +4,19 @@ import { Link } from "react-router-dom";
 import { generatePublicUrl } from "../../urlConfig";
 import { getProducts } from "../../redux/actions/productaction";
 import { connect } from "react-redux";
+
 const Product = (props) => {
   const [productNames, setProductNames] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
-  //console.log(props.productNames);
 
+  const filterCost = () => {
+    console.log("ProductPrice");
+    productNames.sort((a, b) => {
+      return a.productPrice - b.productPrice;
+    });
+  };
   useEffect(() => {
     props.getProducts();
   }, []);
@@ -34,7 +40,7 @@ const Product = (props) => {
           All Products
         </h3>
         <select className="product124 w-25">
-          <option>Below Rs.500</option>
+          <option onClick={filterCost}>Below Rs.500</option>
           <option>Rs.500-1000</option>
           <option>Rs.1500-2000</option>
           <option>Rs.2500-3500</option>
@@ -48,7 +54,7 @@ const Product = (props) => {
             className="card1 "
             style={{
               display: "inline-block",
-              marginRight: "100px",
+              marginRight: "20px",
               textAlign: "center",
             }}
           >

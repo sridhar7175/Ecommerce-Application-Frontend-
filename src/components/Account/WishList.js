@@ -1,15 +1,14 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiFillShopping } from "react-icons/ai";
 import { FaFirstOrderAlt } from "react-icons/fa";
 import { GiSelfLove } from "react-icons/gi";
 import { BsFillLockFill } from "react-icons/bs";
-import {GoPlus} from "react-icons/go"
 
 const WishList = () => {
-    return (
-        <div>
-        <div className="mb-5">
+  return (
+    <div>
+      <div className="mb-5">
         <div className="ac1">
           <Link className="pl-5 ac2" to="/">
             Home
@@ -62,8 +61,8 @@ const WishList = () => {
           </div>
         </div>
       </div>
-        </div>
-    )
-}
+    </div>
+  );
+};
 
-export default WishList
+export default WishList;

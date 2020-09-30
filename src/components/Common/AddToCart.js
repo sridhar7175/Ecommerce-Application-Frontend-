@@ -50,13 +50,18 @@ const AddToCart = () => {
             </div>
           </div>
           <div className="col-sm-4 mt-5 pl-5 pt-3 ">
-          <div className="cart9">
-          <p>Your order is eligible for FREE Delivery. Select this option at checkout. Details</p>
-          <div className="container pb-3 bg-dark text-white">
-            <h4><b>Subtotal (2 items): 92,980.00</b></h4> 
-            <button className="btn btn-success">Proceed to Buy</button> 
-          </div>
-        </div>
+            <div className="cart9">
+              <p>
+                Your order is eligible for FREE Delivery. Select this option at
+                checkout. Details
+              </p>
+              <div className="container pb-3 bg-dark text-white">
+                <h4>
+                  <b>Subtotal (2 items): 92,980.00</b>
+                </h4>
+                <button className="btn btn-success">Proceed to Buy</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

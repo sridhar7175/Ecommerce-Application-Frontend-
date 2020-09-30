@@ -4,7 +4,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Header = () => {
   //console.log(localStorage.getItem("role"))
-  const data = localStorage.getItem("role");
+  // const data = localStorage.getItem("role");
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -17,7 +17,9 @@ const Header = () => {
     });
     //window.removeEventListener("scroll")
   }, []);
-
+  // fetch("http://localhost:5000/api/search/", {
+  //   method: "GET",
+  // });
   return (
     <div className="header">
       <div className={scrolled ? "nav scrolled" : "nav"}>
@@ -79,6 +81,11 @@ const Header = () => {
                   <Link className="nav-link" to="/cart">
                     <AiOutlineShoppingCart /> Cart
                   </Link>
+                </li>
+                <li className="nav-item mt-2 ">
+                  <form>
+                    <input type="text" placeholder="Search" />
+                  </form>
                 </li>
               </ul>
             </div>

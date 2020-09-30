@@ -6,23 +6,50 @@ import { Link } from "react-router-dom";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const [isloggedin,setIsLoggedIn]=useState(false)
-  // console.log("newprops",props)
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
+  //Validation
+  const validate = () => {
+    let emailError = "";
+    let passwordError = "";
+    if (!email) {
+      emailError = "Email Cannot Be Empty";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      emailError = "Email address is invalid";
+    }
+    if (!password) {
+      passwordError = "Password Cannot Be Empty";
+    } else if (password.length < 3) {
+      passwordError = "Password needs to be 3 characters or more";
+    }
+    if (emailError || passwordError) {
+      setEmailError(emailError);
+      setPasswordError(passwordError);
+      return false;
+    }
+    return true;
+  };
+  // console.log(props.user, "user props");
 
-// useEffect(()=>{
-//   console.log("Login",isloggedin)
-// },[isloggedin])
-
-  const login = (e) => {
+  //OnFocus
+  const emailFous = () => {
+    setEmailError(false);
+  };
+  const passwordFocus = () => {
+    setPasswordError(false);
+  };
+  //Login Submit
+  const login = async (e) => {
     e.preventDefault();
-    //var user = { email: email, password: password };
-
-      //setIsLoggedIn(true)
-      
-   
-    props.getLoginUser(email, password);
-   
+    const isVaild = validate();
+    await props.getLoginUser(email, password);
+    console.log(props.user, "user test");
+    if (await props.users?.user.details._id) {
+      window.location.href = "/";
+    } else {
+      console.log("user not logged in");
+    }
     // Axios.post("http://localhost:5000/api/signin", body)
     //   .then((res) => {
     //     console.log(res.data);
@@ -38,13 +65,13 @@ const Login = (props) => {
     //   });
     // setEmail("");
     //setPassword("");
-    setEmail("")
-    setPassword("")
+    setEmail("");
+    setPassword("");
   };
   return (
     <div>
       <div className="container mt-5 login-box mb-5">
-        <h5 className="pl-5">Login Here</h5>
+        <h5 className="pl-5">Signin Here</h5>
         <form>
           <div>
             <input
@@ -52,9 +79,21 @@ const Login = (props) => {
               name="email"
               className="form-control mt-3"
               placeholder="Enter a Email....."
+              onFocus={emailFous}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+          </div>
+          <div
+            style={{
+              color: "red",
+              fontSize: 10,
+              fontWeight: "bold",
+              outlineColor: "red",
+            }}
+            className="pl-5"
+          >
+            {emailError}
           </div>
           <div>
             <input
@@ -63,17 +102,33 @@ const Login = (props) => {
               className="form-control mt-3"
               placeholder="Enter a Password....."
               value={password}
+              onFocus={passwordFocus}
               onChange={(e) => setPassword(e.target.value)}
             />
+          </div>
+          <div
+            style={{
+              color: "red",
+              fontSize: 10,
+              fontWeight: "bold",
+              outlineColor: "red",
+            }}
+            className="pl-5"
+          >
+            {passwordError}
           </div>
           <button onClick={login} className="form-control btn-danger mt-3">
             Submit
           </button>
-          <p className="pl-4 mt-2">
-            Don't have an account <Link to="/signup">? Register</Link>
+          <p
+            className="pl-4 mt-2"
+            style={{ fontSize: "12px", fontWeight: "bold" }}
+          >
+            Don't have an account <Link to="/signup">? Signup</Link>
           </p>
         </form>
       </div>
+      <span></span>
     </div>
   );
 };
