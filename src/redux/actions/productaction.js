@@ -30,11 +30,11 @@ export function getProducts() {
   return (dispatch) => {
     dispatch(getProductsStarted());
     Axios.get("http://localhost:5000/api/getproduct")
-    //.then(res=>res.json())
-    .then((res=>{console.log("res",res.data)
-    dispatch(getProductsSuccess(res.data))
-  })
-)
+      //.then(res=>res.json())
+      .then((res) => {
+        //console.log("res",res.data)
+        dispatch(getProductsSuccess(res.data));
+      })
       .catch((err) => {
         dispatch(getProductsFailed(err));
       });

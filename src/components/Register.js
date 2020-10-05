@@ -69,10 +69,10 @@ const Register = () => {
     };
     console.log(obj);
     Axios.post("http://localhost:5000/api/signup", obj)
-      .then((res) => console.log(res))
+      //.then((res) => console.log(res))
       .then((data) => {
         window.location.href = "/signin";
-        console.log(data);
+        //console.log(data);
         //Swal.fire({ title: "created successfully", timer: 1500 });
       })
       .catch((err) => {
@@ -185,7 +185,7 @@ const Register = () => {
             Submit
           </button>
           <p
-            className="mt-3 pl-4"
+            className="mt-3 pl-5"
             style={{ fontSize: "12px", fontWeight: "bold" }}
           >
             Already have an account? <Link to="/signin">Sign in</Link>

@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import Footer from "../components/Common/Footer";
 
 const Homepage = (props) => {
-  console.log(props, "props");
+  //console.log(props, "props");
   useEffect(() => {
     props.getProducts();
   }, []);

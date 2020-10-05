@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { getLoginUser } from "../redux/actions/loginaction";
 
 const Loginpage = (props) => {
-  console.log(props, "Loginprops");
+  //console.log(props, "Loginprops");
   // console.log(props.getLoginUser())
 
   // useEffect(() => {
@@ -18,7 +18,7 @@ const Loginpage = (props) => {
   // }, []);
 
   useEffect(() => {
-    console.log("propsss", props);
+    //console.log("propsss", props);
     if (props.user?.user?.details?._id) {
       window.location.href = "/";
     } else {
@@ -27,7 +27,7 @@ const Loginpage = (props) => {
   }, [props]);
   async function handleLoginUser(username, password) {
     await props.getLoginUser(username, password);
-    console.log(props, "props after login");
+    //console.log(props, "props after login");
   }
 
   return (
@@ -44,7 +44,6 @@ const Loginpage = (props) => {
   );
 };
 var mapStateToProps = (state) => {
-  console.log("state", state);
   return {
     user: state.loginUsers,
   };

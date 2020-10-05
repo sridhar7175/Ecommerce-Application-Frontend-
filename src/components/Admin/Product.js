@@ -14,7 +14,7 @@ const Product = (props) => {
   //const [search, setSearch] = useState("");
 
   const filterCost = () => {
-    console.log("ProductPrice");
+    //console.log("ProductPrice");
     productNames.sort((a, b) => {
       return a.productPrice - b.productPrice;
     });

@@ -22,7 +22,7 @@ const Updateproduct = (props) => {
   const FetechData = () => {
     Axios.get(`http://localhost:5000/api/getoneproduct/${id}`)
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         const details = res.data[0];
         console.log(details);
         setProductName(details.productName);

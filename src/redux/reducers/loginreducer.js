@@ -5,7 +5,7 @@ import {
 } from "../actions/loginaction";
 
 export var loginUsers = (state = {}, action) => {
-  console.log(action);
+  //console.log(action);
   switch (action.type) {
     case GET_LOGIN_STARTED:
       return {

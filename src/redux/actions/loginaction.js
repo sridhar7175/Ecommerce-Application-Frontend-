@@ -28,7 +28,7 @@ export function getLoginFailed(error) {
 //Thunk Action
 export function getLoginUser(email, password) {
   var user = { email, password };
-  console.log(user, JSON.stringify(user), "user");
+  //console.log(user, JSON.stringify(user), "user");
   return (dispatch) => {
     fetch("http://localhost:5000/api/signin", {
       method: "post",
@@ -37,7 +37,7 @@ export function getLoginUser(email, password) {
     })
       .then((result) => result.json())
       .then((res) => {
-        console.log(res, "res");
+        // console.log(res, "res");
         if (!res) {
           return dispatch({
             type: GET_LOGIN_FAILED,

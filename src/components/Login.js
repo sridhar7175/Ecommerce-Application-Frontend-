@@ -111,13 +111,18 @@ const Login = (props) => {
             {passwordError}
           </div>
           {props?.user?.user?.message && (
-            <p style={{ color: "red" }}>{props?.user?.user?.message}</p>
+            <p
+              className="pl-5 mt-2"
+              style={{ color: "red", fontWeight: "bold" }}
+            >
+              {props?.user?.user?.message}
+            </p>
           )}
           <button onClick={login} className="form-control btn-danger mt-3">
             Submit
           </button>
           <p
-            className="pl-4 mt-2"
+            className="pl-5 mt-2"
             style={{ fontSize: "12px", fontWeight: "bold" }}
           >
             Don't have an account <Link to="/signup">? Signup</Link>
