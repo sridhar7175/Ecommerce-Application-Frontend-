@@ -15,8 +15,6 @@ const Login = (props) => {
     let passwordError = "";
     if (!email) {
       emailError = "Email Cannot Be Empty";
-    } else if (!!/\S+@\S+\.\S+/.test(email)) {
-      emailError = "Email address is invalid";
     }
     if (!password) {
       passwordError = "Password Cannot Be Empty";

@@ -24,8 +24,6 @@ const Register = () => {
     }
     if (!email) {
       emailError = "Email Cannot Be Empty";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      emailError = "Email address is invalid";
     }
     // if (!role) {
     //   roleError = "Role Cannot Be Empty";
