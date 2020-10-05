@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiFillShopping } from "react-icons/ai";
 import { FaFirstOrderAlt } from "react-icons/fa";
@@ -6,9 +6,9 @@ import { GiSelfLove } from "react-icons/gi";
 import { BsFillLockFill } from "react-icons/bs";
 
 const Orders = () => {
-    return (
-        <div>
-        <div className="mb-5">
+  return (
+    <div>
+      <div className="mb-5">
         <div className="ac1">
           <Link className="pl-5 ac2" to="/">
             Home
@@ -56,13 +56,30 @@ const Orders = () => {
             <div className="col-md-8  mt-5 pl-4 pb-5">
               <div className="ac7 pl-3 pt-4">
                 <h6>My Orders</h6>
+                <div className="wishlist mt-1 mr-1">
+                  <div className="">
+                    <table className="table-sm table table-striped table-bordered table-hover">
+                      <thead>
+                        <tr className="wishlist1">
+                          <th className="">No</th>
+                          <th className="">Order Date</th>
+                          <th className="">Order Id</th>
+                          <th className="">Total Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-        </div>
-    )
-}
+    </div>
+  );
+};
 
-export default Orders
+export default Orders;

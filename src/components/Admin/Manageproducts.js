@@ -12,7 +12,7 @@ const Manageproducts = () => {
   const FetechData = () => {
     Axios.get("http://localhost:5000/api/getproduct")
       .then((productNames) => {
-        console.log(productNames);
+        //console.log(productNames);
         setProductNames(productNames.data);
       })
       .catch((err) => {
@@ -59,13 +59,13 @@ const Manageproducts = () => {
                     </Link>
                   </li>
                   <li className="mt-1">
-                    <Link className="newad3 mt-2" to="/admin/dashboard">
-                      <AiOutlineMedicineBox /> Createcategories
+                    <Link className="newad3 mt-2" to="/admin/create/category">
+                      <AiOutlineMedicineBox /> Createcategory
                     </Link>
                   </li>
                   <li className="mt-1">
-                    <Link className="newad3 mt-2" to="/admin/dashboard">
-                      <AiOutlineMedicineBox /> Managecategories
+                    <Link className="newad3 mt-2" to="/admin/managecategory">
+                      <AiOutlineMedicineBox /> Managecategory
                     </Link>
                   </li>
                   <li className="mt-1">

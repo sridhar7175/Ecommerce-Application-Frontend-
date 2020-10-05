@@ -7,9 +7,11 @@ import { connect } from "react-redux";
 
 const Product = (props) => {
   const [productNames, setProductNames] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [search, setSearch] = useState("");
+  //const id = window.location.pathname.slice(22);
+  //console.log(id);
+  //const [loading, setLoading] = useState(false);
+  //const [error, setError] = useState(false);
+  //const [search, setSearch] = useState("");
 
   const filterCost = () => {
     console.log("ProductPrice");
@@ -31,6 +33,22 @@ const Product = (props) => {
   // const filternames = productNames.filter((productName) => {
   //   return productName.productName.toLowerCase().includes(search.toLowerCase());
   // });
+
+  // const productData = () => {
+  //   Axios.get(`http://localhost:5000/api/getoneproduct/${id}`)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       const details = res.data[0];
+  //       console.log(details);
+  //       // setProductName(details.productName);
+  //       // setProductBrand(details.productBrand);
+  //       // setProductDescription(details.productDescription);
+  //       // setproductPrice(details.productPrice);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   const AddTocart = (cart) => {};
   return (
@@ -69,10 +87,8 @@ const Product = (props) => {
                 />
               </Link>
             </div>
-            <div>Name:{productNam.productName}</div>
-            <div>Brand:{productNam.productBrand}</div>
-            <div>Description:{productNam.productDescription}</div>
-            <div>Price:₹{productNam.productPrice}.00</div>
+            <div className="mt-2">Name:{productNam.productName}</div>
+            <div className="mt-2">Price:₹{productNam.productPrice}.00</div>
             <Link to="/cart">
               <button
                 className=" mt-4 productbutton"

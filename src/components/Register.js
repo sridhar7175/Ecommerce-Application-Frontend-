@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
+//import Swal from "sweetalert2";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
+  //const [role, setRole] = useState("");
   const [password, setPassword] = useState("");
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [roleError, setRoleError] = useState("");
+  //const [roleError, setRoleError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   const validate = () => {
     let nameError = "";
     let emailError = "";
-    let roleError = "";
+    //let roleError = "";
     let passwordError = "";
     if (!name) {
       nameError = "Name cannot Be Empty";
@@ -27,18 +27,18 @@ const Register = () => {
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       emailError = "Email address is invalid";
     }
-    if (!role) {
-      roleError = "Role Cannot Be Empty";
-    }
+    // if (!role) {
+    //   roleError = "Role Cannot Be Empty";
+    // }
     if (!password) {
       passwordError = "Password Cannot Be Empty";
     } else if (password.length < 3) {
       passwordError = "Password needs to be 3 characters or more";
     }
-    if (nameError || emailError || roleError || passwordError) {
+    if (nameError || emailError || passwordError) {
       setNameError(nameError);
       setEmailError(emailError);
-      setRoleError(roleError);
+      //setRoleError(roleError);
       setPasswordError(passwordError);
       return false;
     }
@@ -50,9 +50,9 @@ const Register = () => {
   const emailFous = () => {
     setEmailError(false);
   };
-  const roleFocus = () => {
-    setRoleError(false);
-  };
+  // const roleFocus = () => {
+  //   setRoleError(false);
+  // };
   const passwordFocus = () => {
     setPasswordError(false);
   };
@@ -60,10 +60,13 @@ const Register = () => {
   const register = (e) => {
     e.preventDefault();
     const isValid = validate();
+    if (isValid) {
+      console.log("The form was submitted with the following data");
+    }
     let obj = {
       name: name,
       email: email,
-      role: role,
+      // role: role,
       password: password,
     };
     console.log(obj);
@@ -129,6 +132,7 @@ const Register = () => {
           >
             {emailError}
           </div>
+          {/*
           <div>
             <select
               className="form-control mt-3"
@@ -153,6 +157,7 @@ const Register = () => {
           >
             {roleError}
           </div>
+          */}
           <div>
             <input
               type="password"

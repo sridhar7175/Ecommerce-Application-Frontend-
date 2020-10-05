@@ -10,7 +10,6 @@ import Addproductpage from "./containers/adminpages/Addproductpage";
 import Buypage from "./containers/buypages/Buypage";
 import Manageproductspage from "./containers/adminpages/Manageproductspage";
 import Updateproductpage from "./containers/adminpages/Updateproductpage";
-import aboutpage from "./containers/commonpages/aboutpage";
 import Shoppage from "./containers/commonpages/Shoppage";
 import Productdetailspage from "./containers/adminpages/Productdetailspage";
 import AccountInfopage from "./containers/accountpages.js/AccountInfopage";
@@ -18,6 +17,9 @@ import ShippingDetailspage from "./containers/accountpages.js/ShippingDetailspag
 import Wishlistpage from "./containers/accountpages.js/Wishlistpage";
 import Orderspage from "./containers/accountpages.js/Orderspage";
 import AdminDashboardpage from "./containers/adminpages/AdminDashboardpage";
+import Addcategorypage from "./containers/adminpages/Addcategorypage";
+import ManageCategorypage from "./containers/adminpages/ManageCategorypage";
+import Adminorderpage from "./containers/adminpages/Adminorderpage";
 
 function App() {
   return (
@@ -36,6 +38,9 @@ function App() {
           <Route path="/admin/dashboard" component={AdminDashboardpage} />
           <Route path="/admin/create/product" component={Addproductpage} />
           <Route path="/admin/mangeproduct" component={Manageproductspage} />
+          <Route path="/admin/create/category" component={Addcategorypage} />
+          <Route path="/admin/managecategory" component={ManageCategorypage} />
+          <Route path="/admin/Orders" component={Adminorderpage} />
           <Route
             path="/admin/product/update/:Id"
             component={Updateproductpage}

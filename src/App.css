@@ -113,7 +113,7 @@ h2 {
   border: 2px solid black;
   background-color: white;
   color: black;
-  padding: 10px 15px;
+  padding: 5px 15px 5px 15px;
   font-size: 16px;
   cursor: pointer;
 }
@@ -375,9 +375,20 @@ h2 {
   background-color: #e71c23;
   color: white;
   border: none;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 15px 10px 15px;
   border-radius: 10px;
+  outline: none !important;
 }
+/* -->Account End */
+
+/* --->WishList Start----> */
+.wishlist1 {
+  background-color: whitesmoke !important;
+  width: 600px !important;
+  height: 40px;
+}
+/* ---->WishList End---> */
+
 /* -->shippingd1---> */
 .shippingd1 {
   border: 2px solid red !important;
@@ -390,8 +401,9 @@ h2 {
   background-color: #e71c23;
   color: white;
   border: none;
-  padding: 5px 5px 5px 5px;
+  padding: 5px 15px 5px 15px;
   border-radius: 10px;
+  outline: none !important;
 }
 /* --->Account End-----> */
 /* ---->User Dashboard-------> */

@@ -82,11 +82,7 @@ const Header = () => {
                     <AiOutlineShoppingCart /> Cart
                   </Link>
                 </li>
-                <li className="nav-item mt-2 ">
-                  <form>
-                    <input type="text" placeholder="Search" />
-                  </form>
-                </li>
+                <li className="nav-item mt-2 "></li>
               </ul>
             </div>
           </nav>

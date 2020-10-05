@@ -1,16 +1,16 @@
 import React from "react";
+import AddCategory from "../../components/Admin/AddCategory";
 import Header from "../../components/Header";
-import AddProduct from "../../components/Admin/AddProduct";
 import Footer from "../../components/Common/Footer";
 
-const Addproductpage = () => {
+const Addcategorypage = () => {
   return (
     <div>
       <Header />
-      <AddProduct />
+      <AddCategory />
       <Footer />
     </div>
   );
 };
 
-export default Addproductpage;
+export default Addcategorypage;

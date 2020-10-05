@@ -105,13 +105,13 @@ const Updateproduct = (props) => {
                     </Link>
                   </li>
                   <li className="mt-1">
-                    <Link className="newad3 mt-2" to="/admin/dashboard">
-                      <AiOutlineMedicineBox /> Createcategories
+                    <Link className="newad3 mt-2" to="/admin/create/category">
+                      <AiOutlineMedicineBox /> Createcategory
                     </Link>
                   </li>
                   <li className="mt-1">
-                    <Link className="newad3 mt-2" to="/admin/dashboard">
-                      <AiOutlineMedicineBox /> Managecategories
+                    <Link className="newad3 mt-2" to="/admin/managecategory">
+                      <AiOutlineMedicineBox /> Managecategory
                     </Link>
                   </li>
                   <li className="mt-1">

@@ -1,11 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiFillShopping } from "react-icons/ai";
 import { FaFirstOrderAlt } from "react-icons/fa";
 import { GiSelfLove } from "react-icons/gi";
 import { BsFillLockFill } from "react-icons/bs";
+import Axios from "axios";
 
 const AccountInfo = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const id = window.location.pathname.slice(12);
+
+  const updateprofile = (e) => {
+    e.preventDefault();
+    let update = {
+      name: name,
+      email: email,
+      address: address,
+      phone: phone,
+    };
+    Axios.put(`http://localhost:5000/api/updateuserdetails/${id}`, update)
+
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="mb-5">
       <div className="ac1">
@@ -56,34 +81,40 @@ const AccountInfo = () => {
             <div className="ac7 pl-3 pt-4">
               <h6>Account Information</h6>
               <form>
-              <div>
-                <input
-                  type="text"
-                  className="form1"
-                  name=""
-                  placeholder="Name"
-                />
+                <div>
+                  <input
+                    type="text"
+                    className="form1"
+                    name="name"
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Name"
+                  />
                 </div>
                 <input
-                type="text"
-                className="form1 mt-2"
-                name=""
-                placeholder="Email"
-              />
-              <input
-              type="text"
-              className="form1 mt-2"
-              name=""
-              placeholder="Phone"
-            />
-            <input
-            type="text"
-            className="form1 mt-2"
-            name=""
-            placeholder="Address"
-          />
-          <br/>
-          <button className="btn3 mt-3">UpdateProfile</button>
+                  type="text"
+                  className="form1 mt-2"
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                />
+                <input
+                  type="text"
+                  className="form1 mt-2"
+                  onChange={(e) => setPhone(e.target.value)}
+                  name="phone"
+                  placeholder="Phone"
+                />
+                <input
+                  type="text"
+                  className="form1 mt-2"
+                  onChange={(e) => setAddress(e.target.value)}
+                  name="address"
+                  placeholder="Address"
+                />
+                <br />
+                <button className="btn3 mt-3" onClick={updateprofile}>
+                  UpdateProfile
+                </button>
               </form>
             </div>
           </div>

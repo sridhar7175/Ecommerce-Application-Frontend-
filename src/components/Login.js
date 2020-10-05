@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import React, { useState } from "react";
+//import Axios from "axios";
 import { connect } from "react-redux";
 import { getLoginUser } from "./../redux/actions/loginaction";
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ const Login = (props) => {
     let passwordError = "";
     if (!email) {
       emailError = "Email Cannot Be Empty";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
+    } else if (!!/\S+@\S+\.\S+/.test(email)) {
       emailError = "Email address is invalid";
     }
     if (!password) {

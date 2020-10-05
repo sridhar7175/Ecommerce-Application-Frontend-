@@ -1,16 +1,16 @@
 import React from "react";
-import WishList from "../../components/Account/WishList";
 import Footer from "../../components/Common/Footer";
 import Header from "../../components/Header";
+import ManageCategory from "../../components/Admin/ManageCategory";
 
-const Wishlistpage = () => {
+const ManageCategorypage = () => {
   return (
     <div>
       <Header />
-      <WishList />
+      <ManageCategory />
       <Footer />
     </div>
   );
 };
 
-export default Wishlistpage;
+export default ManageCategorypage;
