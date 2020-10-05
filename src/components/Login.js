@@ -41,13 +41,8 @@ const Login = (props) => {
   const login = async (e) => {
     e.preventDefault();
     const isVaild = validate();
-    await props.getLoginUser(email, password);
-    console.log(props.user, "user test");
-    if (await props.users?.user.details._id) {
-      window.location.href = "/";
-    } else {
-      console.log("user not logged in");
-    }
+    await props.onLoginUser(email, password);
+
     // Axios.post("http://localhost:5000/api/signin", body)
     //   .then((res) => {
     //     console.log(res.data);
@@ -115,6 +110,9 @@ const Login = (props) => {
           >
             {passwordError}
           </div>
+          {props?.user?.user?.message && (
+            <p style={{ color: "red" }}>{props?.user?.user?.message}</p>
+          )}
           <button onClick={login} className="form-control btn-danger mt-3">
             Submit
           </button>
