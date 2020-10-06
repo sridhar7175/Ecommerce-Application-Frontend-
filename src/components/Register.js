@@ -24,6 +24,8 @@ const Register = () => {
     }
     if (!email) {
       emailError = "Email Cannot Be Empty";
+    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      emailError = "Email Can Be valid ";
     }
     // if (!role) {
     //   roleError = "Role Cannot Be Empty";
@@ -69,7 +71,7 @@ const Register = () => {
     };
     console.log(obj);
     Axios.post("http://localhost:5000/api/signup", obj)
-      //.then((res) => console.log(res))
+      .then((res) => console.log(res))
       .then((data) => {
         window.location.href = "/signin";
         //console.log(data);

@@ -20,7 +20,7 @@ const Loginpage = (props) => {
   useEffect(() => {
     //console.log("propsss", props);
     if (props.user?.user?.details?._id) {
-      window.location.href = "/";
+      // window.location.href = "/";
     } else {
       console.log("user not logged in");
     }

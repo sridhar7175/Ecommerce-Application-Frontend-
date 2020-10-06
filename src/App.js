@@ -46,7 +46,7 @@ function App() {
             component={Updateproductpage}
           />
           <Route path="/buy" component={Buypage} />
-          <Route path="/productdetails" component={Productdetailspage} />
+          <Route path="/productdetails/:Id" component={Productdetailspage} />
         </Switch>
       </Router>
     </div>

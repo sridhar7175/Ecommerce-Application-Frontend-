@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { connect } from "react-redux";
+import { getLoginUser } from "../redux/actions/loginaction";
 
-const Header = () => {
-  //console.log(localStorage.getItem("role"))
-  // const data = localStorage.getItem("role");
+const Header = (props) => {
   const [scrolled, setScrolled] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
       const isTop = window.screenY < 100;
@@ -15,11 +16,22 @@ const Header = () => {
         setScrolled(false);
       }
     });
-    //window.removeEventListener("scroll")
+    //window.removeEventListener("scroll");
   }, []);
-  // fetch("http://localhost:5000/api/search/", {
-  //   method: "GET",
-  // });
+
+  //console.log(setIsLogged(true));
+  // useEffect(() => {
+  //   if (props.user.details === undefined) {
+  //     setIsLogged(false);
+  //   } else {
+  //     setIsLogged(true);
+  //   }
+
+  //   console.log("logged", isLogged);
+  // }, [isLogged]);
+
+  console.log("allProps", props);
+
   return (
     <div className="header">
       <div className={scrolled ? "nav scrolled" : "nav"}>
@@ -44,45 +56,78 @@ const Header = () => {
               className="collapse navbar-collapse text-white"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav  ml-auto">
-                <li className="nav-item active">
-                  <Link className="nav-link" to="/">
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item ">
-                  <Link className="nav-link " to="/shop">
-                    Products
-                  </Link>
-                </li>
-                <li className="nav-item  ">
-                  <Link className="nav-link" to="/accountinfo">
-                    Dashboard
-                  </Link>
-                </li>
-                <li className="nav-item  ">
-                  <Link className="nav-link" to="/signup">
-                    Signup
-                  </Link>
-                </li>
+              {props.user.details ? (
+                <ul className="navbar-nav  ml-auto">
+                  <li className="nav-item active">
+                    <Link className="nav-link" to="/">
+                      Home
+                    </Link>
+                  </li>
+                  <li className="nav-item ">
+                    <Link className="nav-link " to="/shop">
+                      Products
+                    </Link>
+                  </li>
+                  <li className="nav-item  ">
+                    <Link className="nav-link" to="/accountinfo">
+                      Dashboard
+                    </Link>
+                  </li>
 
-                <li className="nav-item ">
-                  <Link className="nav-link" to="/signin">
-                    Signin
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/">
-                    Signout
-                  </Link>
-                </li>
-                <li className="nav-item  ">
-                  <Link className="nav-link" to="/cart">
-                    <AiOutlineShoppingCart /> Cart
-                  </Link>
-                </li>
-                <li className="nav-item mt-2 "></li>
-              </ul>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/">
+                      Logout
+                    </Link>
+                  </li>
+                  <li className="nav-item  ">
+                    <Link className="nav-link" to="/cart">
+                      <AiOutlineShoppingCart /> Cart
+                    </Link>
+                  </li>
+                  <li className="nav-item mt-2 "></li>
+                </ul>
+              ) : (
+                <ul className="navbar-nav  ml-auto">
+                  <li className="nav-item active">
+                    <Link className="nav-link" to="/">
+                      Home
+                    </Link>
+                  </li>
+                  <li className="nav-item ">
+                    <Link className="nav-link " to="/shop">
+                      Products
+                    </Link>
+                  </li>
+                  <li className="nav-item  ">
+                    <Link className="nav-link" to="/accountinfo">
+                      Dashboard
+                    </Link>
+                  </li>
+
+                  <li className="nav-item  ">
+                    <Link className="nav-link" to="/signup">
+                      Signup
+                    </Link>
+                  </li>
+
+                  <li className="nav-item ">
+                    <Link className="nav-link" to="/signin">
+                      Signin
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/">
+                      Signout
+                    </Link>
+                  </li>
+                  <li className="nav-item  ">
+                    <Link className="nav-link" to="/cart">
+                      <AiOutlineShoppingCart /> Cart
+                    </Link>
+                  </li>
+                  <li className="nav-item mt-2 "></li>
+                </ul>
+              )}
             </div>
           </nav>
         </div>
@@ -90,5 +135,14 @@ const Header = () => {
     </div>
   );
 };
+var mapStateToProps = (state) => {
+  return {
+    user: state.loginUsers,
+  };
+};
 
-export default Header;
+var mapDispatchToProps = {
+  getLoginUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

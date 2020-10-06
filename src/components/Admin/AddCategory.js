@@ -5,7 +5,7 @@ import { FiBox } from "react-icons/fi";
 import { AiOutlineMedicineBox } from "react-icons/ai";
 import { CgToolbox } from "react-icons/cg";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
-import Axios from "axios";
+//import Axios from "axios";
 
 const AddCategory = () => {
   const [values, setValues] = useState({

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiFillShopping } from "react-icons/ai";
 import { FaFirstOrderAlt } from "react-icons/fa";
@@ -11,7 +11,23 @@ const AccountInfo = () => {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-  const id = window.location.pathname.slice(12);
+  useEffect(() => {
+    const id = window.location.pathname.slice(1);
+    const userId = id.substring(id.lastIndexOf("/") + 1);
+    userData(userId);
+  }, []);
+
+  const userData = (id) => {
+    // Axios.get(`http://localhost:5000/api/getoneuserdetails/${id}`)
+    //   .then((res) => {
+    //     //console.log(res.data);
+    //     const details = res.data[0];
+    //     console.log(details);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  };
 
   const updateprofile = (e) => {
     e.preventDefault();
@@ -21,14 +37,14 @@ const AccountInfo = () => {
       address: address,
       phone: phone,
     };
-    Axios.put(`http://localhost:5000/api/updateuserdetails/${id}`, update)
+    // Axios.put(`http://localhost:5000/api/updateuserdetails/${id}`, update)
 
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   return (

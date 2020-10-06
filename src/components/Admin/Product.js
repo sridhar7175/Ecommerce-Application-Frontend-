@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
 import { Link } from "react-router-dom";
 import { generatePublicUrl } from "../../urlConfig";
 import { getProducts } from "../../redux/actions/productaction";
@@ -7,18 +6,31 @@ import { connect } from "react-redux";
 
 const Product = (props) => {
   const [productNames, setProductNames] = useState([]);
-  //const id = window.location.pathname.slice(22);
+  const [sortedList, setSortedList] = useState([]);
+  const id = window.location.pathname.slice(0);
+  // const [search, setSearch] = useState("");
+
   //console.log(id);
   //const [loading, setLoading] = useState(false);
   //const [error, setError] = useState(false);
-  //const [search, setSearch] = useState("");
 
-  const filterCost = () => {
-    //console.log("ProductPrice");
-    productNames.sort((a, b) => {
-      return a.productPrice - b.productPrice;
+  const sortArray = async (e) => {
+    console.log(e.target.value, "e");
+    const range_value = e.target.value.split("-");
+
+    const sortedPrices = productNames.slice(0);
+    console.log("sortBYSlice", sortedPrices);
+    const sorted = await sortedPrices.filter((product) => {
+      console.log(product.productPrice, "price");
+      return (
+        product.productPrice >= Number(range_value[0]) &&
+        product.productPrice <= Number(range_value[1])
+      );
     });
+    console.log("resulted sort", sorted);
+    setSortedList(sorted);
   };
+
   useEffect(() => {
     props.getProducts();
   }, []);
@@ -26,6 +38,7 @@ const Product = (props) => {
   useEffect(() => {
     //console.log(props, "props");
     setProductNames(props?.productNames?.productNames);
+    setSortedList(props?.productNames?.productNames);
 
     //setProductNames(props.productNames)
   }, [props]);
@@ -33,22 +46,7 @@ const Product = (props) => {
   // const filternames = productNames.filter((productName) => {
   //   return productName.productName.toLowerCase().includes(search.toLowerCase());
   // });
-
-  // const productData = () => {
-  //   Axios.get(`http://localhost:5000/api/getoneproduct/${id}`)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       const details = res.data[0];
-  //       console.log(details);
-  //       // setProductName(details.productName);
-  //       // setProductBrand(details.productBrand);
-  //       // setProductDescription(details.productDescription);
-  //       // setproductPrice(details.productPrice);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  //console.log("ProductDetails", props);
 
   const AddTocart = (cart) => {};
   return (
@@ -57,16 +55,16 @@ const Product = (props) => {
         <h3 className="text-left " style={{ fontFamily: "'Play', sans-serif" }}>
           All Products
         </h3>
-        <select className="product124 w-25">
-          <option onClick={filterCost}>Below Rs.500</option>
-          <option>Rs.500-1000</option>
-          <option>Rs.1500-2000</option>
-          <option>Rs.2500-3500</option>
+        <select className="product124 w-25" onChange={(e) => sortArray(e)}>
+          <option value="0-500">Below Rs.500</option>
+          <option value="1000-2000">Rs.1000-2000</option>
+          <option value="2000-4000">Rs.2000-4000</option>
+          <option value="4000-8000">Rs.4000-8000</option>
         </select>
       </div>
 
       <div className="text-center">
-        {productNames?.map((productNam, _id) => (
+        {sortedList?.map((productNam, _id) => (
           <div
             key={productNam._id}
             className="card1 "
@@ -77,7 +75,7 @@ const Product = (props) => {
             }}
           >
             <div>
-              <Link to="/productdetails">
+              <Link to={`/productdetails/${productNam._id}`}>
                 <img
                   src={generatePublicUrl(productNam.productPicture[0]?.img)}
                   width="250px"
