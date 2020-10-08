@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-//import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  //const [role, setRole] = useState("");
+  const [role, setRole] = useState("");
   const [password, setPassword] = useState("");
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
-  //const [roleError, setRoleError] = useState("");
+  const [roleError, setRoleError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   const validate = () => {
     let nameError = "";
     let emailError = "";
-    //let roleError = "";
+    let roleError = "";
     let passwordError = "";
     if (!name) {
       nameError = "Name cannot Be Empty";
@@ -27,9 +27,9 @@ const Register = () => {
     } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       emailError = "Email Can Be valid ";
     }
-    // if (!role) {
-    //   roleError = "Role Cannot Be Empty";
-    // }
+    if (!role) {
+      roleError = "Role Cannot Be Empty";
+    }
     if (!password) {
       passwordError = "Password Cannot Be Empty";
     } else if (password.length < 3) {
@@ -38,7 +38,7 @@ const Register = () => {
     if (nameError || emailError || passwordError) {
       setNameError(nameError);
       setEmailError(emailError);
-      //setRoleError(roleError);
+      setRoleError(roleError);
       setPasswordError(passwordError);
       return false;
     }
@@ -50,9 +50,9 @@ const Register = () => {
   const emailFous = () => {
     setEmailError(false);
   };
-  // const roleFocus = () => {
-  //   setRoleError(false);
-  // };
+  const roleFocus = () => {
+    setRoleError(false);
+  };
   const passwordFocus = () => {
     setPasswordError(false);
   };
@@ -66,7 +66,7 @@ const Register = () => {
     let obj = {
       name: name,
       email: email,
-      // role: role,
+      role: role,
       password: password,
     };
     console.log(obj);
@@ -75,11 +75,11 @@ const Register = () => {
       .then((data) => {
         window.location.href = "/signin";
         //console.log(data);
-        //Swal.fire({ title: "created successfully", timer: 1500 });
+        Swal.fire({ title: "created successfully", timer: 1500 });
       })
       .catch((err) => {
         console.log(JSON.stringify(err));
-        //Swal.fire({ title: "Please Enter All Details", timer: 1500 });
+        Swal.fire({ title: "Please Enter All Details", timer: 1500 });
       });
   };
 
@@ -132,7 +132,7 @@ const Register = () => {
           >
             {emailError}
           </div>
-          {/*
+
           <div>
             <select
               className="form-control mt-3"
@@ -157,7 +157,6 @@ const Register = () => {
           >
             {roleError}
           </div>
-          */}
           <div>
             <input
               type="password"

@@ -5,6 +5,7 @@ import { FiBox } from "react-icons/fi";
 import { AiOutlineMedicineBox } from "react-icons/ai";
 import { CgToolbox } from "react-icons/cg";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { FaHome, FaFirstOrderAlt } from "react-icons/fa";
 const AdminOrders = () => {
   return (
     <div>
@@ -23,7 +24,7 @@ const AdminOrders = () => {
                   <ul className="mt-2">
                     <li className="mt-1">
                       <Link className="newad3 mt-2" to="/admin/dashboard">
-                        <RiAdminFill /> Dashboard
+                        <FaHome /> Dashboard
                       </Link>
                     </li>
                     <li className="mt-1">
@@ -36,7 +37,7 @@ const AdminOrders = () => {
                         <FiBox /> Manageproduct
                       </Link>
                     </li>
-                    <li className="mt-1">
+                    {/*  <li className="mt-1">
                       <Link className="newad3 mt-2" to="/admin/create/category">
                         <AiOutlineMedicineBox /> Createcategory
                       </Link>
@@ -46,14 +47,10 @@ const AdminOrders = () => {
                         <AiOutlineMedicineBox /> Managecategory
                       </Link>
                     </li>
+  */}
                     <li className="mt-1">
                       <Link className="newad3 mt-2" to="/admin/Orders">
-                        <CgToolbox /> Orders
-                      </Link>
-                    </li>
-                    <li className="mt-1">
-                      <Link className="newad3 mt-2" to="/admin/Users">
-                        <AiOutlineUsergroupAdd /> Users
+                        <FaFirstOrderAlt /> Orders
                       </Link>
                     </li>
                   </ul>

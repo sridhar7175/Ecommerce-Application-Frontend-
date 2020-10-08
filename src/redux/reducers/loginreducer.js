@@ -2,6 +2,7 @@ import {
   GET_LOGIN_STARTED,
   GET_LOGIN_SUCCESS,
   GET_LOGIN_FAILED,
+  GET_SIGNOUT,
 } from "../actions/loginaction";
 
 export var loginUsers = (state = {}, action) => {
@@ -14,7 +15,7 @@ export var loginUsers = (state = {}, action) => {
         error: null,
       };
     case GET_LOGIN_SUCCESS:
-      console.log(action);
+      console.log(action, "action");
       return {
         user: action.payload,
         loading: false,
@@ -25,6 +26,11 @@ export var loginUsers = (state = {}, action) => {
         loading: false,
         error: action.payload.message,
         ...state,
+      };
+    case GET_SIGNOUT:
+      return {
+        ...state,
+        user: [],
       };
     default:
       return state;

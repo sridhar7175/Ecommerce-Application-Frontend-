@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiAdminFill } from "react-icons/ri";
 import { FiBox } from "react-icons/fi";
 import { AiOutlineMedicineBox } from "react-icons/ai";
 import { CgToolbox } from "react-icons/cg";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
-const AdminDashboard = () => {
+import { connect } from "react-redux";
+import { getLoginUser } from "../../redux/actions/loginaction";
+import { FaHome, FaFirstOrderAlt } from "react-icons/fa";
+const AdminDashboard = (props) => {
+  console.log("adminprops", props);
+  useEffect(() => {
+    const data = props.loginUsers;
+    if (!data.user.details) window.location.href = "/";
+  }, []);
   return (
     <div>
       <div className="container-fluid mb-5 mt-5">
@@ -22,7 +30,7 @@ const AdminDashboard = () => {
                 <ul className="mt-2">
                   <li className="mt-1">
                     <Link className="newad3 mt-2" to="/admin/dashboard">
-                      <RiAdminFill /> Dashboard
+                      <FaHome /> Dashboard
                     </Link>
                   </li>
                   <li className="mt-1">
@@ -35,7 +43,7 @@ const AdminDashboard = () => {
                       <FiBox /> Manageproduct
                     </Link>
                   </li>
-                  <li className="mt-1">
+                  {/* <li className="mt-1">
                     <Link className="newad3 mt-2" to="/admin/create/category">
                       <AiOutlineMedicineBox /> Createcategory
                     </Link>
@@ -45,14 +53,10 @@ const AdminDashboard = () => {
                       <AiOutlineMedicineBox /> Managecategory
                     </Link>
                   </li>
+  */}
                   <li className="mt-1">
                     <Link className="newad3 mt-2" to="/admin/Orders">
-                      <CgToolbox /> Orders
-                    </Link>
-                  </li>
-                  <li className="mt-1">
-                    <Link className="newad3 mt-2" to="/admin/Users">
-                      <AiOutlineUsergroupAdd /> Users
+                      <FaFirstOrderAlt /> Orders
                     </Link>
                   </li>
                 </ul>
@@ -61,22 +65,16 @@ const AdminDashboard = () => {
           </div>
           <div className="col-sm-9 newad4 pt-3">
             <div className="row">
-              <div className="col-sm-4 mt-2">
+              <div className="col-sm-6 mt-2">
                 <div className="admin-card pl-2 text-white pt-3">
                   <h5>5</h5>
                   <h6>Registered User</h6>
                 </div>
               </div>
-              <div className="col-sm-4 mt-2">
+              <div className="col-sm-6 mt-2">
                 <div className="admin-card1 pl-2 text-white pt-3">
                   <h5>20</h5>
                   <h6>Orders</h6>
-                </div>
-              </div>
-              <div className="col-sm-4">
-                <div className="admin-card2 pl-2 text-white pt-3">
-                  <h5>20</h5>
-                  <h6>Daily Vistior</h6>
                 </div>
               </div>
             </div>
@@ -86,5 +84,14 @@ const AdminDashboard = () => {
     </div>
   );
 };
+var mapStateToProps = (state) => {
+  return {
+    loginUsers: state.loginUsers,
+  };
+};
 
-export default AdminDashboard;
+var mapDispatchToProps = {
+  getLoginUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);

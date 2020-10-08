@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { connect } from "react-redux";
-import { getLoginUser } from "../redux/actions/loginaction";
+import { getLoginUser, getSignOut } from "../redux/actions/loginaction";
 
 const Header = (props) => {
   const [scrolled, setScrolled] = useState(false);
@@ -19,24 +19,20 @@ const Header = (props) => {
     //window.removeEventListener("scroll");
   }, []);
 
-  //console.log(setIsLogged(true));
-  // useEffect(() => {
-  //   if (props.user.details === undefined) {
-  //     setIsLogged(false);
-  //   } else {
-  //     setIsLogged(true);
-  //   }
+  // console.log("allProps", props?.user?.user?.details);
 
-  //   console.log("logged", isLogged);
-  // }, [isLogged]);
+  //console.log("allPropsname", props?.user?.user?.details?.name);
+  //console.log("allPropsname", props?.user?.user?.details?.role);
 
-  console.log("allProps", props);
+  async function handleSignOut() {
+    props.getSignOut();
+  }
 
   return (
     <div className="header">
-      <div className={scrolled ? "nav scrolled" : "nav"}>
+      <div className="nav-header">
         <div className="container text-white">
-          <nav className="navbar navbar-expand-lg navbar-light ">
+          <nav className="navbar navbar-expand-lg navbar-light nav-header">
             <Link className="navbar-brand" to="/">
               Amazon
             </Link>
@@ -56,35 +52,84 @@ const Header = (props) => {
               className="collapse navbar-collapse text-white"
               id="navbarSupportedContent"
             >
-              {props.user.details ? (
+              {props?.user?.user?.details ? (
                 <ul className="navbar-nav  ml-auto">
-                  <li className="nav-item active">
-                    <Link className="nav-link" to="/">
-                      Home
-                    </Link>
-                  </li>
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="/shop">
-                      Products
-                    </Link>
-                  </li>
-                  <li className="nav-item  ">
-                    <Link className="nav-link" to="/accountinfo">
-                      Dashboard
-                    </Link>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/">
-                      Logout
-                    </Link>
-                  </li>
-                  <li className="nav-item  ">
-                    <Link className="nav-link" to="/cart">
-                      <AiOutlineShoppingCart /> Cart
-                    </Link>
-                  </li>
-                  <li className="nav-item mt-2 "></li>
+                  {props?.user?.user?.details?.role === "admin" ? (
+                    <React.Fragment>
+                      <li className="nav-item active">
+                        <Link className="nav-link" to="/">
+                          Home
+                        </Link>
+                      </li>
+                      <li className="nav-item ">
+                        <Link className="nav-link " to="/shop">
+                          Products
+                        </Link>
+                      </li>
+                      <div className="dropdown mt-2">
+                        <Link className="dropbtn">
+                          {props?.user?.user?.details?.name}
+                        </Link>
+                        <div className="dropdown-content">
+                          <Link to="/admin/dashboard" className="admindrp">
+                            A.Dashboard
+                          </Link>
+                          <Link to="/admin/Orders" className="admindrp">
+                            Order
+                          </Link>
+                        </div>
+                      </div>
+                      <li className="nav-item">
+                        <Link
+                          className="nav-link"
+                          to="/"
+                          onClick={() => handleSignOut()}
+                        >
+                          Signout
+                        </Link>
+                      </li>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <li className="nav-item active">
+                        <Link className="nav-link" to="/">
+                          Home
+                        </Link>
+                      </li>
+                      <li className="nav-item ">
+                        <Link className="nav-link " to="/shop">
+                          Products
+                        </Link>
+                      </li>
+                      <div className="dropdown mt-2">
+                        <Link className="dropbtn">
+                          {props?.user?.user?.details?.name}
+                        </Link>
+                        <div className="dropdown-content">
+                          <Link to="/accountinfo" className="admindrp">
+                            Dashboard
+                          </Link>
+                          <Link to="/myorder" className="admindrp">
+                            Order
+                          </Link>
+                        </div>
+                      </div>
+                      <li className="nav-item">
+                        <Link
+                          className="nav-link"
+                          to="/"
+                          onClick={() => handleSignOut()}
+                        >
+                          Signout
+                        </Link>
+                      </li>
+                      <li className="nav-item  ">
+                        <Link className="nav-link" to="/cart">
+                          <AiOutlineShoppingCart /> Cart
+                        </Link>
+                      </li>
+                    </React.Fragment>
+                  )}
                 </ul>
               ) : (
                 <ul className="navbar-nav  ml-auto">
@@ -99,12 +144,6 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li className="nav-item  ">
-                    <Link className="nav-link" to="/accountinfo">
-                      Dashboard
-                    </Link>
-                  </li>
-
-                  <li className="nav-item  ">
                     <Link className="nav-link" to="/signup">
                       Signup
                     </Link>
@@ -115,17 +154,12 @@ const Header = (props) => {
                       Signin
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/">
-                      Signout
-                    </Link>
-                  </li>
+
                   <li className="nav-item  ">
                     <Link className="nav-link" to="/cart">
                       <AiOutlineShoppingCart /> Cart
                     </Link>
                   </li>
-                  <li className="nav-item mt-2 "></li>
                 </ul>
               )}
             </div>
@@ -143,6 +177,7 @@ var mapStateToProps = (state) => {
 
 var mapDispatchToProps = {
   getLoginUser,
+  getSignOut,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

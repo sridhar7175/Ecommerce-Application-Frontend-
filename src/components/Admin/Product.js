@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { generatePublicUrl } from "../../urlConfig";
 import { getProducts } from "../../redux/actions/productaction";
 import { connect } from "react-redux";
+import Axios from "axios";
+import { getLoginUser } from "../../redux/actions/loginaction";
 
 const Product = (props) => {
   const [productNames, setProductNames] = useState([]);
@@ -48,7 +50,11 @@ const Product = (props) => {
   // });
   //console.log("ProductDetails", props);
 
-  const AddTocart = (cart) => {};
+  const AddTocart = () => {
+    Axios.post("http://localhost:5000/api/user/createaddtocart").then((res) =>
+      console.log(res)
+    );
+  };
   return (
     <div className="container mt-5 ">
       <div className="product123 mb-5">
@@ -87,15 +93,19 @@ const Product = (props) => {
             </div>
             <div className="mt-2">Name:{productNam.productName}</div>
             <div className="mt-2">Price:₹{productNam.productPrice}.00</div>
-            <Link to="/cart">
-              <button
-                className=" mt-4 productbutton"
-                style={{ marginRight: "10px" }}
-                onClick={() => AddTocart(productNam)}
-              >
-                Add To Cart
-              </button>
-            </Link>
+            {props?.loginUsers?.user?.details?.role === "admin" ? (
+              ""
+            ) : (
+              <Link to="/cart">
+                <button
+                  className=" mt-4 productbutton"
+                  style={{ marginRight: "10px" }}
+                  onClick={AddTocart}
+                >
+                  AddTocart
+                </button>
+              </Link>
+            )}
           </div>
         ))}
       </div>
@@ -106,11 +116,13 @@ const Product = (props) => {
 var mapStateToProps = (state) => {
   return {
     productNames: state.products,
+    loginUsers: state.loginUsers,
   };
 };
 
 var mapDispatchToProps = {
   getProducts,
+  getLoginUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

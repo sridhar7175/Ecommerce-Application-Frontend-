@@ -21,7 +21,7 @@ import Addcategorypage from "./containers/adminpages/Addcategorypage";
 import ManageCategorypage from "./containers/adminpages/ManageCategorypage";
 import Adminorderpage from "./containers/adminpages/Adminorderpage";
 
-function App() {
+function App(props) {
   return (
     <div className="">
       <Router>

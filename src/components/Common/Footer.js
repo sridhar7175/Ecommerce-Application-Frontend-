@@ -3,6 +3,7 @@ import { FaFacebook } from "react-icons/fa";
 import { AiOutlineInstagram, AiFillTwitterCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SiGmail } from "react-icons/si";
+import { card1 } from "../../images/cards.png";
 
 const Footer = () => {
   return (
@@ -83,7 +84,7 @@ const Footer = () => {
               <button className="btn mt-2 text-white ml-2">Signup</button>
             </form>
             <img
-              src="images/cards.png"
+              src="https://www.teeshade.com/wp-content/uploads/2020/06/cards.png"
               className="mt-2"
               alt="img"
               width="300px"

@@ -5,16 +5,20 @@ import { FaFirstOrderAlt } from "react-icons/fa";
 import { GiSelfLove } from "react-icons/gi";
 import { BsFillLockFill } from "react-icons/bs";
 import Axios from "axios";
+import { getLoginUser } from "../../redux/actions/loginaction";
+import { connect } from "react-redux";
 
-const AccountInfo = () => {
+const AccountInfo = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+
+  console.log("AccountInfo", props?.loginUsers?.user?.details?.name);
+
   useEffect(() => {
-    const id = window.location.pathname.slice(1);
-    const userId = id.substring(id.lastIndexOf("/") + 1);
-    userData(userId);
+    const data = props.loginUsers;
+    if (!data.user.details) window.location.href = "/";
   }, []);
 
   const userData = (id) => {
@@ -60,7 +64,7 @@ const AccountInfo = () => {
           <div className="col-sm-4 ac3 mt-5 pl-4 pb-5 pt-4">
             <h4>My Account</h4>
             <p>Hello</p>
-            <h5>Sridhar</h5>
+            <h5>{props?.loginUsers?.user?.details?.name}</h5>
             <div className="ac4"></div>
             <div className="ac5">
               <ul>
@@ -83,11 +87,6 @@ const AccountInfo = () => {
                   <Link className="ac6" to="/wishlist">
                     <GiSelfLove />
                     My WishList
-                  </Link>
-                </li>
-                <li className="mt-1">
-                  <Link className="ac6" to="/logout">
-                    <BsFillLockFill /> Logout
                   </Link>
                 </li>
               </ul>
@@ -139,5 +138,13 @@ const AccountInfo = () => {
     </div>
   );
 };
+var mapStateToProps = (state) => {
+  return {
+    loginUsers: state.loginUsers,
+  };
+};
 
-export default AccountInfo;
+var mapDispatchToProps = {
+  getLoginUser,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo);

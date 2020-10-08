@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineUser, AiFillShopping } from "react-icons/ai";
 import { FaFirstOrderAlt } from "react-icons/fa";
 import { GiSelfLove } from "react-icons/gi";
 import { BsFillLockFill } from "react-icons/bs";
+import { getLoginUser } from "../../redux/actions/loginaction";
+import { connect } from "react-redux";
 
-const Orders = () => {
+const Orders = (props) => {
+  //console.log("AccountInfo", props?.loginUsers?.user?.details?.name);
+
+  useEffect(() => {
+    const data = props.loginUsers;
+    if (!data.user.details) window.location.href = "/";
+  }, []);
   return (
     <div>
       <div className="mb-5">
@@ -20,7 +28,7 @@ const Orders = () => {
             <div className="col-sm-4 ac3 mt-5 pl-4 pb-5 pt-4">
               <h4>My Account</h4>
               <p>Hello</p>
-              <h5>Sridhar</h5>
+              <h5>{props?.loginUsers?.user?.details?.name}</h5>
               <div className="ac4"></div>
               <div className="ac5">
                 <ul>
@@ -43,11 +51,6 @@ const Orders = () => {
                     <Link className="ac6" to="/wishlist">
                       <GiSelfLove />
                       My WishList
-                    </Link>
-                  </li>
-                  <li className="mt-1">
-                    <Link className="ac6" to="/logout">
-                      <BsFillLockFill /> Logout
                     </Link>
                   </li>
                 </ul>
@@ -81,5 +84,14 @@ const Orders = () => {
     </div>
   );
 };
+var mapStateToProps = (state) => {
+  return {
+    loginUsers: state.loginUsers,
+  };
+};
 
-export default Orders;
+var mapDispatchToProps = {
+  getLoginUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Orders);

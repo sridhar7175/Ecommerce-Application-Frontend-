@@ -3,6 +3,7 @@ import Axios from "axios";
 import { Link } from "react-router-dom";
 import { generatePublicUrl } from "../../urlConfig";
 import { connect } from "react-redux";
+import { getLoginUser } from "../../redux/actions/loginaction";
 
 const ProductDetails = (props) => {
   const [productName, setProductName] = useState("");
@@ -73,14 +74,19 @@ const ProductDetails = (props) => {
               <option>3</option>
             </select>
             <br />
-            <Link to="/cart">
-              <button
-                className="btn btn-info btn-sm mt-2"
-                style={{ marginRight: "10px" }}
-              >
-                Add To Cart
-              </button>
-            </Link>
+
+            {props?.loginUsers?.user?.details?.role === "admin" ? (
+              ""
+            ) : (
+              <Link to="/cart">
+                <button
+                  className="btn btn-info btn-sm mt-2"
+                  style={{ marginRight: "10px" }}
+                >
+                  Add To Cart
+                </button>
+              </Link>
+            )}
             <div className="pd4 mt-4">
               <h5>About Item</h5>
               <ul>
@@ -96,9 +102,12 @@ const ProductDetails = (props) => {
 var mapStateToProps = (state) => {
   return {
     productNames: state.products,
+    loginUsers: state.loginUsers,
   };
 };
 
-var mapDispatchToProps = {};
+var mapDispatchToProps = {
+  getLoginUser,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);

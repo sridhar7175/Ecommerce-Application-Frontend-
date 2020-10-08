@@ -3,6 +3,7 @@
 export const GET_LOGIN_STARTED = "GET_LOGIN_STARTED";
 export const GET_LOGIN_SUCCESS = "GET_LOGIN_SUCCESS";
 export const GET_LOGIN_FAILED = "GET_LOGIN_FAILED";
+export const GET_SIGNOUT = "GET_SIGNOUT";
 
 export function getLoginStatred() {
   return {
@@ -51,5 +52,12 @@ export function getLoginUser(email, password) {
         }
       })
       .catch((error) => {});
+  };
+}
+
+export function getSignOut(error) {
+  return {
+    type: GET_SIGNOUT,
+    error,
   };
 }

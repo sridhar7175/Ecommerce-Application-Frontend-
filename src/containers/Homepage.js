@@ -14,7 +14,7 @@ const Homepage = (props) => {
   }, []);
   return (
     <div>
-      <Header />
+      <Header user={props.user} />
       <Home />
       <Product products={props?.all?.products} />
       <Footer />

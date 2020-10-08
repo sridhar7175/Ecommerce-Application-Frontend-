@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 const Home = () => {
-  
   return (
-    <div>
+    <div className="home123">
       <div
         id="carouselExampleIndicators"
         className="carousel slide"
@@ -30,8 +28,10 @@ const Home = () => {
               height="500px"
             />
             <div className="carousel-caption">
-            <h2>Men Office Wears</h2>
-            <Link to='/shop' className="home1">Shop Now</Link>
+              <h2>Men Office Wears</h2>
+              <Link to="/shop" className="home1">
+                Shop Now
+              </Link>
             </div>
           </div>
           <div className="carousel-item">
@@ -43,8 +43,10 @@ const Home = () => {
               height="500px"
             />
             <div className="carousel-caption">
-            <h2>Classic Women Wears</h2>
-            <Link to='/shop' className="home1">Shop Now</Link>
+              <h2>Classic Women Wears</h2>
+              <Link to="/shop" className="home1">
+                Shop Now
+              </Link>
             </div>
           </div>
           <div className="carousel-item">
@@ -56,8 +58,10 @@ const Home = () => {
               height="500px"
             />
             <div className="carousel-caption">
-            <h2>Summer Discount Offer!</h2>
-            <Link to='/shop' className="home1">Shop Now</Link>
+              <h2>Summer Discount Offer!</h2>
+              <Link to="/shop" className="home1">
+                Shop Now
+              </Link>
             </div>
           </div>
         </div>
@@ -67,7 +71,10 @@ const Home = () => {
           role="button"
           data-slide="prev"
         >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
           <span className="sr-only">Previous</span>
         </a>
         <a
@@ -76,7 +83,10 @@ const Home = () => {
           role="button"
           data-slide="next"
         >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
           <span className="sr-only">Next</span>
         </a>
       </div>
