@@ -2,13 +2,13 @@ import React, { useState } from "react";
 //import Axios from "axios";
 import { connect } from "react-redux";
 import { getLoginUser } from "./../redux/actions/loginaction";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
+  const history = useHistory();
   //Validation
   const validate = () => {
     let emailError = "";
@@ -38,28 +38,14 @@ const Login = (props) => {
     setPasswordError(false);
   };
   //Login Submit
+
   const login = async (e) => {
     e.preventDefault();
-    const isVaild = validate();
+    validate();
     await props.onLoginUser(email, password);
-
-    // Axios.post("http://localhost:5000/api/signin", body)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     localStorage.setItem("userId", res.data._id);
-    //     localStorage.setItem("role", res.data.role);
-    //     localStorage.setItem("name", res.data.name);
-    //     localStorage.setItem("email", res.data.email);
-    //     window.location.href = "/";
-    //   })
-    //   .catch((err) => {
-    //     console.log(JSON.stringify(err));
-    //     alert("Failed to Login, Please try again");
-    //   });
-    // setEmail("");
-    //setPassword("");
-    setEmail("");
-    setPassword("");
+    // if (validate) {
+    //   alert("Plz Enter the Details");
+    // }
   };
   return (
     <div>

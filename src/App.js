@@ -20,6 +20,7 @@ import AdminDashboardpage from "./containers/adminpages/AdminDashboardpage";
 import Addcategorypage from "./containers/adminpages/Addcategorypage";
 import ManageCategorypage from "./containers/adminpages/ManageCategorypage";
 import Adminorderpage from "./containers/adminpages/Adminorderpage";
+import LandingPage from "./containers/LandingPage";
 
 function App(props) {
   return (
@@ -27,6 +28,7 @@ function App(props) {
       <Router>
         <Switch>
           <Route exact path="/" component={Homepage} />
+          {/*  <Route path="/home" component={Homepage} />*/}
           <Route path="/shop" component={Shoppage} />
           <Route path="/signup" component={Registerpage} />
           <Route path="/signin" component={Loginpage} />

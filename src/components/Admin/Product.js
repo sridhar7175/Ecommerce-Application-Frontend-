@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { generatePublicUrl } from "../../urlConfig";
 import { getProducts } from "../../redux/actions/productaction";
 import { connect } from "react-redux";
-import Axios from "axios";
 import { getLoginUser } from "../../redux/actions/loginaction";
+import { AiOutlineHeart } from "react-icons/ai";
+import { postCartItems } from "../../redux/actions/cartaction";
 
 const Product = (props) => {
   const [productNames, setProductNames] = useState([]);
   const [sortedList, setSortedList] = useState([]);
-  const id = window.location.pathname.slice(0);
-  // const [search, setSearch] = useState("");
-
-  //console.log(id);
-  //const [loading, setLoading] = useState(false);
-  //const [error, setError] = useState(false);
+  let history = useHistory();
 
   const sortArray = async (e) => {
     console.log(e.target.value, "e");
@@ -38,22 +34,18 @@ const Product = (props) => {
   }, []);
 
   useEffect(() => {
-    //console.log(props, "props");
     setProductNames(props?.productNames?.productNames);
     setSortedList(props?.productNames?.productNames);
-
-    //setProductNames(props.productNames)
   }, [props]);
 
-  // const filternames = productNames.filter((productName) => {
-  //   return productName.productName.toLowerCase().includes(search.toLowerCase());
-  // });
-  //console.log("ProductDetails", props);
-
-  const AddTocart = () => {
-    Axios.post("http://localhost:5000/api/user/createaddtocart").then((res) =>
-      console.log(res)
-    );
+  const AddTocart = (product) => {
+    //console.log("aaaaaaaaaaaa", props.loginUsers.user.details._id);
+    if (!props.loginUsers?.user?.details?._id) {
+      history.push("/signin");
+    } else {
+      props.postCartItems(props.loginUsers.user.details._id, product._id);
+      history.push("/cart");
+    }
   };
   return (
     <div className="container mt-5 ">
@@ -82,6 +74,10 @@ const Product = (props) => {
           >
             <div>
               <Link to={`/productdetails/${productNam._id}`}>
+                {/*  <div className="heart">
+                  <AiOutlineHeart />
+                </div>
+          */}
                 <img
                   src={generatePublicUrl(productNam.productPicture[0]?.img)}
                   width="250px"
@@ -96,15 +92,13 @@ const Product = (props) => {
             {props?.loginUsers?.user?.details?.role === "admin" ? (
               ""
             ) : (
-              <Link to="/cart">
-                <button
-                  className=" mt-4 productbutton"
-                  style={{ marginRight: "10px" }}
-                  onClick={AddTocart}
-                >
-                  AddTocart
-                </button>
-              </Link>
+              <button
+                className=" mt-4 productbutton"
+                style={{ marginRight: "10px" }}
+                onClick={() => AddTocart(productNam)}
+              >
+                AddTocart
+              </button>
             )}
           </div>
         ))}
@@ -117,12 +111,14 @@ var mapStateToProps = (state) => {
   return {
     productNames: state.products,
     loginUsers: state.loginUsers,
+    postCartReducers: state.postCartReducers,
   };
 };
 
 var mapDispatchToProps = {
   getProducts,
   getLoginUser,
+  postCartItems,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

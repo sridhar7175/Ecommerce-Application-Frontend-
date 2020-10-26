@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { generatePublicUrl } from "../../urlConfig";
 import { connect } from "react-redux";
 import { getLoginUser } from "../../redux/actions/loginaction";
+import { BsArrowLeft } from "react-icons/bs";
+import { postCartItems } from "../../redux/actions/cartaction";
 
 const ProductDetails = (props) => {
   const [productName, setProductName] = useState("");
@@ -11,22 +13,27 @@ const ProductDetails = (props) => {
   const [productPrice, setproductPrice] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productPicture, setProductPicture] = useState("");
+  const [qty, setQty] = useState("");
+
+  let history = useHistory();
   useEffect(() => {
     let id = window.location.pathname.slice(1);
     id = id.split("/")[1];
     //console.log("Propsaa", id);
     const product = props.productNames.productNames.filter((productind) => {
-      //console.log("ind", productind._id);
+      // console.log("ind", productind._id);
       return productind._id === id;
     });
-    if (product) productData(product[0]);
+    //if (product) productData(product[0]);
 
     const productId = id.substring(id.lastIndexOf("/") + 1);
+    ///console.log("aaa", productId);
     productData(productId);
   }, []);
 
   const productData = (id) => {
-    Axios.get(`http://localhost:5000/api/getoneproduct/${id}`)
+    //console.log("abbbbb", id);
+    Axios.get(`http://localhost:5000/api/getoneproduct/${id.toString()}`)
       .then((res) => {
         //console.log(res.data);
         const details = res.data[0];
@@ -43,16 +50,30 @@ const ProductDetails = (props) => {
   };
   let imageUrl = "";
   if (productPicture[0]) imageUrl = generatePublicUrl(productPicture[0].img);
+
+  const AddTocart = () => {
+    let id = window.location.pathname.slice(1);
+    id = id.split("/")[1];
+    //console.log("Propsaa", id);
+    //console.log("abccc", id);
+    // console.log(
+    //   "pd",
+    //   props.postCartItems(props.loginUsers.user.details._id, id)
+    // );
+    props.postCartItems(props.loginUsers.user.details._id, id);
+    history.push("/cart");
+  };
+
   return (
     <div>
       <div className="container mt-3 pd1 mb-5">
-        <h5>
-          <Link to="/">Go Back</Link>
+        <h5 className="ml-5">
+          <Link to="/">
+            <BsArrowLeft className="ml-2" />
+            <b className="ml-2"> Go Back </b>
+          </Link>
         </h5>
-        <p className="mt-2">
-          Apple MacBook Pro (16-inch, 16GB RAM, 512GB Storage, 2.6GHz 9th Gen
-          Intel Core i7) - Space Grey
-        </p>
+
         <div className="row">
           <div className="col-sm-6 pd2 mt-2">
             <img src={imageUrl} alt="pad" width="350px" height="300px" />
@@ -65,9 +86,9 @@ const ProductDetails = (props) => {
               Brand :<b>{productBrand}</b>
             </h4>
             <h4>
-              Price : <b>₹{productPrice}</b>
+              Price : <b>₹{qty !== "" ? qty * productPrice : productPrice}</b>
             </h4>
-            <select>
+            <select onChange={(e) => setQty(e.target.value)} value={qty}>
               <option>Select Qty</option>
               <option>1</option>
               <option>2</option>
@@ -78,14 +99,13 @@ const ProductDetails = (props) => {
             {props?.loginUsers?.user?.details?.role === "admin" ? (
               ""
             ) : (
-              <Link to="/cart">
-                <button
-                  className="btn btn-info btn-sm mt-2"
-                  style={{ marginRight: "10px" }}
-                >
-                  Add To Cart
-                </button>
-              </Link>
+              <button
+                className="btn btn-info btn-sm mt-2"
+                style={{ marginRight: "10px" }}
+                onClick={() => AddTocart()}
+              >
+                Add To Cart
+              </button>
             )}
             <div className="pd4 mt-4">
               <h5>About Item</h5>
@@ -103,11 +123,13 @@ var mapStateToProps = (state) => {
   return {
     productNames: state.products,
     loginUsers: state.loginUsers,
+    postCartReducers: state.postCartReducers,
   };
 };
 
 var mapDispatchToProps = {
   getLoginUser,
+  postCartItems,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);

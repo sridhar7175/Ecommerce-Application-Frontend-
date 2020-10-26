@@ -31,7 +31,10 @@ const WishList = (props) => {
               <div className="ac5">
                 <ul>
                   <li className="mt-1">
-                    <Link className="ac6" to="/accountinfo">
+                    <Link
+                      className="ac6"
+                      to={`/accountinfo/${props.loginUsers.user.details._id}`}
+                    >
                       <AiOutlineUser /> Account Information
                     </Link>
                   </li>

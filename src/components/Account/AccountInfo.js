@@ -8,29 +8,43 @@ import Axios from "axios";
 import { getLoginUser } from "../../redux/actions/loginaction";
 import { connect } from "react-redux";
 
+
 const AccountInfo = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState(null)
+  const id = window.location.pathname.id;
+  //console.log("AccountInfo", props?.loginUsers?.user?.details?.name);
 
-  console.log("AccountInfo", props?.loginUsers?.user?.details?.name);
+  //console.log(window.location.pathname);
 
   useEffect(() => {
     const data = props.loginUsers;
     if (!data.user.details) window.location.href = "/";
   }, []);
 
-  const userData = (id) => {
-    // Axios.get(`http://localhost:5000/api/getoneuserdetails/${id}`)
-    //   .then((res) => {
-    //     //console.log(res.data);
-    //     const details = res.data[0];
-    //     console.log(details);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+  useEffect(() => {
+    userData();
+  }, []);
+  const userData = () => {
+    Axios.get(
+      `http://localhost:5000/api/getoneuserdetails/${props.loginUsers.user.details._id}`
+    )
+      .then((res) => {
+        console.log(res.data);
+        const details = res.data[0];
+        setName(details.name);
+        setEmail(details.email);
+        setPhone(details.phone);
+        setAddress(details.address);
+        //console.log(details);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const updateprofile = (e) => {
@@ -41,14 +55,17 @@ const AccountInfo = (props) => {
       address: address,
       phone: phone,
     };
-    // Axios.put(`http://localhost:5000/api/updateuserdetails/${id}`, update)
-
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    Axios.put(
+      `http://localhost:5000/api/updateuserdetails/${props.loginUsers.user.details._id}`,
+      update
+    )
+      .then((res) => {
+        console.log(res);
+        alert("Successfully Updated My profile")
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -69,7 +86,10 @@ const AccountInfo = (props) => {
             <div className="ac5">
               <ul>
                 <li className="mt-1">
-                  <Link className="ac6" to="/accountinfo">
+                  <Link
+                    className="ac6"
+                    to={`/accountinfo/${props.loginUsers.user.details._id}`}
+                  >
                     <AiOutlineUser /> Account Information
                   </Link>
                 </li>
@@ -101,6 +121,7 @@ const AccountInfo = (props) => {
                     type="text"
                     className="form1"
                     name="name"
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Name"
                   />
@@ -109,6 +130,7 @@ const AccountInfo = (props) => {
                   type="text"
                   className="form1 mt-2"
                   name="email"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
                 />
@@ -117,12 +139,14 @@ const AccountInfo = (props) => {
                   className="form1 mt-2"
                   onChange={(e) => setPhone(e.target.value)}
                   name="phone"
+                  value={phone}
                   placeholder="Phone"
                 />
                 <input
                   type="text"
                   className="form1 mt-2"
                   onChange={(e) => setAddress(e.target.value)}
+                  value={address}
                   name="address"
                   placeholder="Address"
                 />

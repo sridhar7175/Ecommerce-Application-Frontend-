@@ -15,18 +15,18 @@ export var loginUsers = (state = {}, action) => {
         error: null,
       };
     case GET_LOGIN_SUCCESS:
-      console.log(action, "action");
+      // console.log(action, "action");
       return {
         user: action.payload,
         loading: false,
         error: null,
       };
-    case GET_LOGIN_FAILED:
-      return {
-        loading: false,
-        error: action.payload.message,
-        ...state,
-      };
+    // case GET_LOGIN_FAILED:
+    //   return {
+    //     loading: false,
+    //     error: action.payload.message,
+    //     ...state,
+    //   };
     case GET_SIGNOUT:
       return {
         ...state,

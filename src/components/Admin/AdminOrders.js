@@ -10,9 +10,9 @@ const AdminOrders = () => {
   return (
     <div>
       <div>
-        <div className="container-fluid mb-5 mt-5">
+        <div className="container mb-5 mt-5">
           <div className="row">
-            <div className="col-sm-3">
+            <div className="col-sm-4">
               <div className="newad1 pl-3 pt-4">
                 <img
                   src="https://secure.gravatar.com/avatar/053467956553007b62a4cc9eb47ad16d?s=70&d=mm&r=g"
@@ -57,9 +57,9 @@ const AdminOrders = () => {
                 </div>
               </div>
             </div>
-            <div className="col-sm-9 newad4 mt-2 pt-3 pl-5">
+            <div className="col-sm-8 newad4  pt-3 pl-5">
               <h6>My Orders</h6>
-              <div className="wishlist mt-1 mr-1">
+              <div className="wishlist">
                 <div className="">
                   <table className="table-sm table table-striped table-bordered table-hover">
                     <thead>

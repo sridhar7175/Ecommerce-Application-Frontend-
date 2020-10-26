@@ -13,68 +13,62 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState("");
 
   const validate = () => {
-    let nameError = "";
-    let emailError = "";
-    let roleError = "";
-    let passwordError = "";
     if (!name) {
-      nameError = "Name cannot Be Empty";
+      setNameError("Name cannot Be Empty");
     } else if (!/^[A-Za-z]+/.test(name.trim())) {
-      nameError = "Enter a valid name";
+      setNameError("Enter a valid name");
     }
     if (!email) {
-      emailError = "Email Cannot Be Empty";
+      setEmailError("Email Cannot Be Empty");
     } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      emailError = "Email Can Be valid ";
+      setEmailError("Email Can Be valid ");
     }
     if (!role) {
-      roleError = "Role Cannot Be Empty";
+      setRoleError("Role Cannot Be Empty");
     }
     if (!password) {
-      passwordError = "Password Cannot Be Empty";
-    } else if (password.length < 3) {
-      passwordError = "Password needs to be 3 characters or more";
+      setPasswordError("Password Cannot Be Empty");
+    } else if (!password.length < 3) {
+      setPasswordError("Password needs to be 3 characters or more");
     }
-    if (nameError || emailError || passwordError) {
-      setNameError(nameError);
-      setEmailError(emailError);
-      setRoleError(roleError);
-      setPasswordError(passwordError);
+    if (nameError || emailError || passwordError || roleError) {
       return false;
     }
-    return true;
+    return register;
   };
-  const nameFous = () => {
-    setNameError(false);
-  };
-  const emailFous = () => {
-    setEmailError(false);
-  };
-  const roleFocus = () => {
-    setRoleError(false);
-  };
-  const passwordFocus = () => {
-    setPasswordError(false);
-  };
+  // const nameFous = () => {
+  //   setNameError(false);
+  // };
+  // const emailFous = () => {
+  //   setEmailError(false);
+  // };
+  // const roleFocus = () => {
+  //   setRoleError(false);
+  // };
+  // const passwordFocus = () => {
+  //   setPasswordError(false);
+  // };
 
   const register = (e) => {
     e.preventDefault();
-    const isValid = validate();
-    if (isValid) {
-      console.log("The form was submitted with the following data");
-    }
+
+    // const isValid = validate();
+    // if (isValid) {
+    //   console.log("The form was submitted with the following data");
+    // }
+    validate();
     let obj = {
       name: name,
       email: email,
       role: role,
       password: password,
     };
-    console.log(obj);
+    // console.log(obj);
     Axios.post("http://localhost:5000/api/signup", obj)
       .then((res) => console.log(res))
       .then((data) => {
         window.location.href = "/signin";
-        //console.log(data);
+        console.log(data);
         Swal.fire({ title: "created successfully", timer: 1500 });
       })
       .catch((err) => {
@@ -95,7 +89,6 @@ const Register = () => {
               className="form-control mt-3"
               placeholder="Enter a name....."
               value={name}
-              onFocus={nameFous}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -117,7 +110,6 @@ const Register = () => {
               className="form-control mt-3"
               placeholder="Enter a Email....."
               value={email}
-              onFocus={emailFous}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -139,7 +131,6 @@ const Register = () => {
               name="role"
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              onFocus={roleFocus}
             >
               <option value="">Please Select</option>
               <option>user</option>
@@ -163,7 +154,6 @@ const Register = () => {
               name="password"
               className="form-control mt-3"
               placeholder="Enter a Password....."
-              onFocus={passwordFocus}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -189,7 +179,7 @@ const Register = () => {
             className="mt-3 pl-5"
             style={{ fontSize: "12px", fontWeight: "bold" }}
           >
-            Already have an account? <Link to="/signin">Sign in</Link>
+            Already have an account?
           </p>
         </form>
       </div>

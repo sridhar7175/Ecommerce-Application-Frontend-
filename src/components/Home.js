@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Home = () => {
   return (
@@ -30,7 +31,7 @@ const Home = () => {
             <div className="carousel-caption">
               <h2>Men Office Wears</h2>
               <Link to="/shop" className="home1">
-                Shop Now
+                Shop Now <AiOutlineArrowRight />
               </Link>
             </div>
           </div>
@@ -43,9 +44,10 @@ const Home = () => {
               height="500px"
             />
             <div className="carousel-caption">
-              <h2>Classic Women Wears</h2>
+              <h2 className="">Classic Women Wears</h2>
+              <span className="mb-2"></span>
               <Link to="/shop" className="home1">
-                Shop Now
+                Shop Now <AiOutlineArrowRight />
               </Link>
             </div>
           </div>
@@ -60,7 +62,7 @@ const Home = () => {
             <div className="carousel-caption">
               <h2>Summer Discount Offer!</h2>
               <Link to="/shop" className="home1">
-                Shop Now
+                Shop Now <AiOutlineArrowRight />
               </Link>
             </div>
           </div>

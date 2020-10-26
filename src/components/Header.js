@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { connect } from "react-redux";
 import { getLoginUser, getSignOut } from "../redux/actions/loginaction";
+import { removeCartItems } from "../redux/actions/cartaction";
+import { getProducts } from "../redux/actions/productaction";
+import Axios from "axios";
 
 const Header = (props) => {
   const [scrolled, setScrolled] = useState(false);
@@ -19,13 +22,12 @@ const Header = (props) => {
     //window.removeEventListener("scroll");
   }, []);
 
-  // console.log("allProps", props?.user?.user?.details);
-
-  //console.log("allPropsname", props?.user?.user?.details?.name);
-  //console.log("allPropsname", props?.user?.user?.details?.role);
-
   async function handleSignOut() {
     props.getSignOut();
+    props.removeCartItems();
+  }
+  async function handleRemove() {
+    props.removeCartItems();
   }
 
   return (
@@ -57,18 +59,14 @@ const Header = (props) => {
                   {props?.user?.user?.details?.role === "admin" ? (
                     <React.Fragment>
                       <li className="nav-item active">
-                        <Link className="nav-link" to="/">
-                          Home
+                        <Link className="nav-link" to="/admin/dashboard">
+                          AdminDashboard
                         </Link>
                       </li>
-                      <li className="nav-item ">
-                        <Link className="nav-link " to="/shop">
-                          Products
-                        </Link>
-                      </li>
-                      <div className="dropdown mt-2">
+
+                      {/*  <div className="dropdown mt-2">
                         <Link className="dropbtn">
-                          {props?.user?.user?.details?.name}
+                          {props.user.user.details.name}
                         </Link>
                         <div className="dropdown-content">
                           <Link to="/admin/dashboard" className="admindrp">
@@ -79,10 +77,11 @@ const Header = (props) => {
                           </Link>
                         </div>
                       </div>
+                  */}
                       <li className="nav-item">
                         <Link
                           className="nav-link"
-                          to="/"
+                          to="/signin"
                           onClick={() => handleSignOut()}
                         >
                           Signout
@@ -102,11 +101,17 @@ const Header = (props) => {
                         </Link>
                       </li>
                       <div className="dropdown mt-2">
-                        <Link className="dropbtn">
-                          {props?.user?.user?.details?.name}
+                        <Link
+                          className="dropbtn"
+                          to={`/accountinfo/${props.user.user.details._id}`}
+                        >
+                          {props.user.user.details.name}
                         </Link>
                         <div className="dropdown-content">
-                          <Link to="/accountinfo" className="admindrp">
+                          <Link
+                            to={`/accountinfo/${props.user.user.details._id}`}
+                            className="admindrp"
+                          >
                             Dashboard
                           </Link>
                           <Link to="/myorder" className="admindrp">
@@ -117,14 +122,18 @@ const Header = (props) => {
                       <li className="nav-item">
                         <Link
                           className="nav-link"
-                          to="/"
+                          to="/signin"
                           onClick={() => handleSignOut()}
                         >
                           Signout
                         </Link>
                       </li>
                       <li className="nav-item  ">
-                        <Link className="nav-link" to="/cart">
+                        <Link
+                          className="nav-link"
+                          to="/cart"
+                          onClick={() => handleRemove()}
+                        >
                           <AiOutlineShoppingCart /> Cart
                         </Link>
                       </li>
@@ -133,11 +142,6 @@ const Header = (props) => {
                 </ul>
               ) : (
                 <ul className="navbar-nav  ml-auto">
-                  <li className="nav-item active">
-                    <Link className="nav-link" to="/">
-                      Home
-                    </Link>
-                  </li>
                   <li className="nav-item ">
                     <Link className="nav-link " to="/shop">
                       Products
@@ -172,12 +176,15 @@ const Header = (props) => {
 var mapStateToProps = (state) => {
   return {
     user: state.loginUsers,
+    productNames: state.products,
   };
 };
 
 var mapDispatchToProps = {
   getLoginUser,
   getSignOut,
+  getProducts,
+  removeCartItems,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

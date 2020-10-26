@@ -78,9 +78,9 @@ const Updateproduct = (props) => {
 
   return (
     <div>
-      <div className="container-fluid mb-5 mt-5">
+      <div className="container mb-5 mt-5">
         <div className="row">
-          <div className="col-sm-3">
+          <div className="col-sm-4">
             <div className="newad1 pl-3 pt-4">
               <img
                 src="https://secure.gravatar.com/avatar/053467956553007b62a4cc9eb47ad16d?s=70&d=mm&r=g"
@@ -125,7 +125,7 @@ const Updateproduct = (props) => {
               </div>
             </div>
           </div>
-          <div className="col-sm-9">
+          <div className="col-sm-8">
             <div className=" p-3  mb-5 pb-5 bg-info text-white">
               <Link className="btn btn-warning" to={`/admin/dashboard`}>
                 <span className="">Admin Home</span>

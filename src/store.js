@@ -1,7 +1,8 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { loginUsers } from "./redux/reducers/loginreducer";
-//window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 import { products } from "./redux/reducers/productreducer";
+import { cartReducer, postCartReducers } from "./redux/reducers/cartreducer";
+import { userIdReducer } from "./redux/reducers/getuseridreducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -11,11 +12,14 @@ import thunk from "redux-thunk";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["loginUsers"],
+  whitelist: ["loginUsers", "products", "postCartReducers", "cartReducer"],
 };
 const rootStore = combineReducers({
   loginUsers,
   products,
+  cartReducer,
+  postCartReducers,
+  userIdReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootStore);
 

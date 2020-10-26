@@ -75,11 +75,7 @@ const Footer = () => {
           <div className="col-md-4">
             <h6 className="text-white">SUBSCRIBE FOR NEWSLETTER</h6>
             <form>
-              <input
-                type="text"
-                className="footer-form"
-                placeholder=" Your Email(required)"
-              />
+              <input type="text" className="footer-form" placeholder="Email" />
               <br />
               <button className="btn mt-2 text-white ml-2">Signup</button>
             </form>

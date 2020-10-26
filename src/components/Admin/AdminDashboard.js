@@ -9,16 +9,16 @@ import { connect } from "react-redux";
 import { getLoginUser } from "../../redux/actions/loginaction";
 import { FaHome, FaFirstOrderAlt } from "react-icons/fa";
 const AdminDashboard = (props) => {
-  console.log("adminprops", props);
-  useEffect(() => {
-    const data = props.loginUsers;
-    if (!data.user.details) window.location.href = "/";
-  }, []);
+  //console.log("adminprops", props);
+  // useEffect(() => {
+  //   const data = props.loginUsers;
+  //   if (!data.user.details) window.location.href = "/";
+  // }, []);
   return (
     <div>
-      <div className="container-fluid mb-5 mt-5">
+      <div className="container mb-5 mt-5">
         <div className="row">
-          <div className="col-sm-3">
+          <div className="col-sm-4">
             <div className="newad1 pl-3 pt-4">
               <img
                 src="https://secure.gravatar.com/avatar/053467956553007b62a4cc9eb47ad16d?s=70&d=mm&r=g"
@@ -63,7 +63,7 @@ const AdminDashboard = (props) => {
               </div>
             </div>
           </div>
-          <div className="col-sm-9 newad4 pt-3">
+          <div className="col-sm-8 newad4 pt-3">
             <div className="row">
               <div className="col-sm-6 mt-2">
                 <div className="admin-card pl-2 text-white pt-3">
