@@ -2,6 +2,11 @@
   padding: 0px;
   margin: 0px;
 }
+body {
+  background-color: #f0f2f5 !important;
+  width: 100%;
+  height: 700px;
+}
 h2 {
   font-family: "Alata", sans-serif;
 }
@@ -11,7 +16,7 @@ h2 {
   background-color: gray;
 }
 .header {
-  /* background-color: #ed017f; */
+  background-color: white;
 }
 
 .navbar-brand {
@@ -292,8 +297,9 @@ button:not(:disabled) {
   color: white !important;
 }
 .newad4 {
-  background-color: #eaf0f1;
+  background-color: #30336b;
   width: 100% !important;
+  border-radius: 10px !important;
 }
 .admin-card {
   background-color: #43be31 !important;

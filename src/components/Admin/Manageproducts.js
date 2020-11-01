@@ -80,7 +80,7 @@ const Manageproducts = () => {
             </div>
           </div>
           <div className="col-sm-8">
-            <div className="bg-info p-4 ">
+            <div className="bg-info p-4 " style={{ borderRadius: "10px" }}>
               <Link className="btn btn-warning" to={`/admin/dashboard`}>
                 <span className="">Admin Home</span>
               </Link>

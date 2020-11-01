@@ -12,7 +12,7 @@ import thunk from "redux-thunk";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["loginUsers", "products", "postCartReducers", "cartReducer"],
+  whitelist: ["loginUsers", "products"],
 };
 const rootStore = combineReducers({
   loginUsers,

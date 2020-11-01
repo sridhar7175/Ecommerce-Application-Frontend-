@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 const Register = () => {
   const [name, setName] = useState("");
@@ -28,43 +27,25 @@ const Register = () => {
     }
     if (!password) {
       setPasswordError("Password Cannot Be Empty");
-    } else if (!password.length < 3) {
+    } else if (!password.length <= 3) {
       setPasswordError("Password needs to be 3 characters or more");
     }
     if (nameError || emailError || passwordError || roleError) {
       return false;
     }
-    return register;
+    return true;
   };
-  // const nameFous = () => {
-  //   setNameError(false);
-  // };
-  // const emailFous = () => {
-  //   setEmailError(false);
-  // };
-  // const roleFocus = () => {
-  //   setRoleError(false);
-  // };
-  // const passwordFocus = () => {
-  //   setPasswordError(false);
-  // };
 
-  const register = (e) => {
+  const register = async (e) => {
     e.preventDefault();
-
-    // const isValid = validate();
-    // if (isValid) {
-    //   console.log("The form was submitted with the following data");
-    // }
-    validate();
+    await validate();
     let obj = {
       name: name,
       email: email,
       role: role,
       password: password,
     };
-    // console.log(obj);
-    Axios.post("http://localhost:5000/api/signup", obj)
+    await Axios.post("http://localhost:5000/api/signup", obj)
       .then((res) => console.log(res))
       .then((data) => {
         window.location.href = "/signin";

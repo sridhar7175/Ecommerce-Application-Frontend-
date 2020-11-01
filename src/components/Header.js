@@ -1,32 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { connect } from "react-redux";
 import { getLoginUser, getSignOut } from "../redux/actions/loginaction";
 import { removeCartItems } from "../redux/actions/cartaction";
 import { getProducts } from "../redux/actions/productaction";
-import Axios from "axios";
 
 const Header = (props) => {
-  const [scrolled, setScrolled] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const isTop = window.screenY < 100;
-      if (isTop !== true) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    });
-    //window.removeEventListener("scroll");
-  }, []);
-
   async function handleSignOut() {
     props.getSignOut();
     props.removeCartItems();
   }
-  async function handleRemove() {
+  async function handleCartRemove() {
     props.removeCartItems();
   }
 
@@ -49,7 +34,6 @@ const Header = (props) => {
             >
               <span className="navbar-toggler-icon "></span>
             </button>
-
             <div
               className="collapse navbar-collapse text-white"
               id="navbarSupportedContent"
@@ -63,21 +47,6 @@ const Header = (props) => {
                           AdminDashboard
                         </Link>
                       </li>
-
-                      {/*  <div className="dropdown mt-2">
-                        <Link className="dropbtn">
-                          {props.user.user.details.name}
-                        </Link>
-                        <div className="dropdown-content">
-                          <Link to="/admin/dashboard" className="admindrp">
-                            A.Dashboard
-                          </Link>
-                          <Link to="/admin/Orders" className="admindrp">
-                            Order
-                          </Link>
-                        </div>
-                      </div>
-                  */}
                       <li className="nav-item">
                         <Link
                           className="nav-link"
@@ -132,7 +101,7 @@ const Header = (props) => {
                         <Link
                           className="nav-link"
                           to="/cart"
-                          onClick={() => handleRemove()}
+                          onClick={() => handleCartRemove()}
                         >
                           <AiOutlineShoppingCart /> Cart
                         </Link>
@@ -147,21 +116,24 @@ const Header = (props) => {
                       Products
                     </Link>
                   </li>
-                  <li className="nav-item  ">
+                  <li className="nav-item">
                     <Link className="nav-link" to="/signup">
                       Signup
                     </Link>
                   </li>
 
-                  <li className="nav-item ">
+                  <li className="nav-item">
                     <Link className="nav-link" to="/signin">
                       Signin
                     </Link>
                   </li>
 
-                  <li className="nav-item  ">
+                  <li className="nav-item">
                     <Link className="nav-link" to="/cart">
-                      <AiOutlineShoppingCart /> Cart
+                      <AiOutlineShoppingCart
+                        onClick={() => handleCartRemove()}
+                      />{" "}
+                      Cart
                     </Link>
                   </li>
                 </ul>

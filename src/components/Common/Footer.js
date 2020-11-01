@@ -3,7 +3,6 @@ import { FaFacebook } from "react-icons/fa";
 import { AiOutlineInstagram, AiFillTwitterCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SiGmail } from "react-icons/si";
-import { card1 } from "../../images/cards.png";
 
 const Footer = () => {
   return (

@@ -54,10 +54,10 @@ const Product = (props) => {
           All Products
         </h3>
         <select className="product124 w-25" onChange={(e) => sortArray(e)}>
-          <option value="0-500">Below Rs.500</option>
-          <option value="1000-2000">Rs.1000-2000</option>
-          <option value="2000-4000">Rs.2000-4000</option>
-          <option value="4000-8000">Rs.4000-8000</option>
+          <option value="0-10000">Below Rs.10000</option>
+          <option value="10000-30000">Rs.10000-30000</option>
+          <option value="30000-60000">Rs.30000-60000</option>
+          <option value="60000-80000">Rs.60000-80000</option>
         </select>
       </div>
 
@@ -87,8 +87,12 @@ const Product = (props) => {
                 />
               </Link>
             </div>
-            <div className="mt-2">Name:{productNam.productName}</div>
-            <div className="mt-2">Price:₹{productNam.productPrice}.00</div>
+            <div className="mt-2">
+              <b>{productNam.productName}</b>
+            </div>
+            <div className="mt-2">
+              <b>₹{productNam.productPrice}.00</b>
+            </div>
             {props?.loginUsers?.user?.details?.role === "admin" ? (
               ""
             ) : (

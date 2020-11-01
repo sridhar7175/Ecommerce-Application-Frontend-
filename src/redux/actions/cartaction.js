@@ -26,6 +26,17 @@ export function getAddToCartFailed(error) {
   };
 }
 
+//Cart Remove Items
+
+export const REMOVE_CART_ITEMS = "REMOVE_CART_ITEMS";
+
+export function removeCartItems(error) {
+  return {
+    type: REMOVE_CART_ITEMS,
+    error,
+  };
+}
+
 //Thunk Action
 export function getCarts() {
   //console.log("hello", id);
@@ -97,16 +108,5 @@ export function postCartItems(signup_id, product_id) {
         }
       })
       .catch((error) => {});
-  };
-}
-
-//Cart Remove Items
-
-export const REMOVE_CART_ITEMS = "REMOVE_CART_ITEMS";
-
-export function removeCartItems(error) {
-  return {
-    type: REMOVE_CART_ITEMS,
-    error,
   };
 }

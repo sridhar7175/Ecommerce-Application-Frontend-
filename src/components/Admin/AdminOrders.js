@@ -48,8 +48,12 @@ const AdminOrders = () => {
                       </Link>
                     </li>
   */}
-                    <li className="mt-1">
-                      <Link className="newad3 mt-2" to="/admin/Orders">
+                    <li className="mt-1 text-white">
+                      <Link
+                        className="newad3 mt-2 "
+                        style={{ color: "white" }}
+                        to="/admin/Orders"
+                      >
                         <FaFirstOrderAlt /> Orders
                       </Link>
                     </li>

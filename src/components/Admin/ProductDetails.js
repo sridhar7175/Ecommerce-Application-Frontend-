@@ -54,14 +54,14 @@ const ProductDetails = (props) => {
   const AddTocart = () => {
     let id = window.location.pathname.slice(1);
     id = id.split("/")[1];
-    //console.log("Propsaa", id);
-    //console.log("abccc", id);
-    // console.log(
-    //   "pd",
-    //   props.postCartItems(props.loginUsers.user.details._id, id)
-    // );
-    props.postCartItems(props.loginUsers.user.details._id, id);
-    history.push("/cart");
+    // props.postCartItems(props.loginUsers.user.details._id, id);
+    // history.push("/cart");
+    if (!props.loginUsers?.user?.details?._id) {
+      history.push("/signin");
+    } else {
+      props.postCartItems(props.loginUsers.user.details._id, id);
+      history.push("/cart");
+    }
   };
 
   return (

@@ -126,7 +126,10 @@ const Updateproduct = (props) => {
             </div>
           </div>
           <div className="col-sm-8">
-            <div className=" p-3  mb-5 pb-5 bg-info text-white">
+            <div
+              className=" p-3  mb-5 pb-5 bg-info text-white"
+              style={{ borderRadius: "10px" }}
+            >
               <Link className="btn btn-warning" to={`/admin/dashboard`}>
                 <span className="">Admin Home</span>
               </Link>

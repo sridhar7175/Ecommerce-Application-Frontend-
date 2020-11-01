@@ -63,7 +63,10 @@ const AdminDashboard = (props) => {
               </div>
             </div>
           </div>
-          <div className="col-sm-8 newad4 pt-3">
+          <div
+            className="col-sm-8 newad4 pt-3"
+            style={{ borderRadius: "10px" }}
+          >
             <div className="row">
               <div className="col-sm-6 mt-2">
                 <div className="admin-card pl-2 text-white pt-3">

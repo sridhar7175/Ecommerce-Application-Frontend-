@@ -7,9 +7,7 @@ import { generatePublicUrl } from "../../urlConfig";
 
 const AddToCart = (props) => {
   const [qty, setQty] = useState("");
-  //const [carts, setCarts] = useState([]);
 
-  //console.log("cartsItems", props);
   let amount = 0;
 
   useEffect(() => {
@@ -25,16 +23,10 @@ const AddToCart = (props) => {
       props.cartReducer.carts?.product_id?.productPicture[0].img
     );
 
-  // console.log("cartId", props?.postCartReducers?.cartData?._id);
-
-  // useEffect(() => {
-  //   deleteAddToCart();
-
-  // }, []);
-
-  const deleteAddToCart = async () => {
+  const deleteAddToCart = async (cart) => {
+    console.log("addddddd", props.postCartReducers.cartData?._id);
     await Axios.delete(
-      `http://localhost:5000/api/user/deleteaddtocart/${props.postCartReducers.cartData._id}`
+      `http://localhost:5000/api/user/deleteaddtocart/${cart}`
     ).then((res) => {
       console.log("aaaaaaa", res.data);
 
@@ -44,14 +36,14 @@ const AddToCart = (props) => {
     });
   };
 
-  // if (props.cartReducer?.loading) {
-  //   return (
-  //     <div>
-  //       <h4>Carts</h4>
-  //       <p>Loading.. Please wait</p>
-  //     </div>
-  //   );
-  // }
+  if (props.cartReducer?.loading) {
+    return (
+      <div>
+        <h4>Carts</h4>
+        <p>Loading.. Please wait</p>
+      </div>
+    );
+  }
   //console.log("aaaaaaaaaabbb", props.postCartReducers.cartData._id);
   console.log("CartLength", props.cartReducer.carts);
   return (
@@ -65,7 +57,7 @@ const AddToCart = (props) => {
             <b>Price</b>
           </p>
         </div>
-        {props.cartReducer.carts.length === 0 ? (
+        {props?.cartReducer?.carts?.length === 0 ? (
           <h5
             className="mt-5 text-white p-3 ml-5"
             style={{ backgroundColor: "black", borderRadius: "10px" }}
@@ -82,9 +74,9 @@ const AddToCart = (props) => {
           <div className="row">
             <div className="col-md-8">
               <div className="addtocart1"></div>
-              {props.cartReducer.carts.map((cart, index) => {
+              {props.cartReducer?.carts?.map((cart, index) => {
                 amount = amount + cart.product_id?.productPrice;
-
+                console.log("aaaaaa", cart._id);
                 return (
                   <div key={index} className="mt-3">
                     <div className="addtocart2 " style={{ display: "flex" }}>
@@ -142,7 +134,7 @@ const AddToCart = (props) => {
                 <div className="container pb-3 bg-dark text-white">
                   <h4>
                     <b style={{ fontSize: "14px" }}>
-                      Subtotal ({props.cartReducer.carts.length} items):{" "}
+                      Subtotal ({props.cartReducer?.carts?.length} items):{" "}
                       {qty == "" ? amount : amount * qty}
                     </b>
                   </h4>
